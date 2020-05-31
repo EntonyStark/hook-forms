@@ -23,7 +23,15 @@
 		"react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
 		"react/prop-types": 0,
 		"react/jsx-one-expression-per-line": 0,
-		"quotes": ["error", "double", { "avoidEscape": true }],
+		"quotes": ["error", "single", { "avoidEscape": true }],
+		"max-len": ["error", {
+			"code": 140,
+			"ignoreComments": true,
+			"ignoreUrls": true,
+			"ignoreTemplateLiterals": true,
+			"ignoreRegExpLiterals": true
+			}
+		],
 		"react/jsx-props-no-spreading": 0,
 		"import/prefer-default-export": 0
 	},

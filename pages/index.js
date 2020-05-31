@@ -1,6 +1,6 @@
-import axios from "axios";
+import axios from 'axios';
 
-import { BaseLayout } from "../layouts/base-layout";
+import { BaseLayout } from '../layouts/base-layout';
 
 export const getStaticProps = async () => {
   const info = await axios.get(process.env.REPOSITORY_URL);
@@ -63,7 +63,7 @@ export default function Home({ repoInfo, contributorsInfo }) {
           .title {
             margin: 0;
             line-height: 1.15;
-            font-size: 6rem;
+            font-size: 7rem;
           }
 
           .title,
@@ -73,7 +73,7 @@ export default function Home({ repoInfo, contributorsInfo }) {
 
           .description {
             line-height: 1.5;
-            font-size: 1.8rem;
+            font-size: 2.4rem;
           }
 
           .grid {
@@ -107,7 +107,7 @@ export default function Home({ repoInfo, contributorsInfo }) {
 
           .card h3 {
             margin: 0 0 1rem 0;
-            font-size: 1.5rem;
+            font-size: 2.5rem;
           }
 
           .card p {
