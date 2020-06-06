@@ -3,28 +3,16 @@
 	flex-direction: column;
 	align-items: center;
 	width: 80%;
-	
-	&__formBox {
-		width: 100%;
-    display: flex;
-		justify-content: center;
-		margin-bottom: 3rem;
-	}
-
-	&__form {
-		width: 70%;
-	}
 
 	&__title {
 		width: 100%;
 		font-size: 2.4rem;
 		font-weight: 600;
-		margin-bottom: 3rem;
+		margin-bottom: 1rem;
 	}
-
-	&__btnBox {
+	
+	&__desc {
 		width: 100%;
-		display: flex;
-		justify-content: center;
+		margin-bottom: 2rem;
 	}
 }

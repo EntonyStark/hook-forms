@@ -4,4 +4,11 @@
 	pre {
 		border-radius: 3px;
 	}
+
+	&__title {
+		width: 100%;
+		font-size: 2.4rem;
+		font-weight: 600;
+		margin-bottom: 3rem;
+	}
 }

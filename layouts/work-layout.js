@@ -19,7 +19,7 @@ const navItems = [
 ];
 
 
-export const WorkLayout = ({ children, owner }) => {
+export const WorkLayout = ({ children }) => {
   const packageName = 'Hook Easy Form';
   // console.log('styles wl', styles);
   return (
@@ -37,7 +37,7 @@ export const WorkLayout = ({ children, owner }) => {
       <Navigation packageName={packageName} navItems={navItems} />
       <main>
         {children}
-        <Footer owner={owner} border={false} />
+        <Footer border={false} />
       </main>
     </div>
   );

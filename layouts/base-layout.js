@@ -4,7 +4,7 @@ import { Footer } from '../components/footer/footer';
 
 import styles from './base-layout.module.scss';
 
-export const BaseLayout = ({ children, owner }) => (
+export const BaseLayout = ({ children }) => (
   <div className={styles.container}>
     <Head>
       <title>Hook Easy Form</title>
@@ -18,6 +18,6 @@ export const BaseLayout = ({ children, owner }) => (
     </Head>
 
     <main>{children}</main>
-    <Footer owner={owner} />
+    <Footer />
   </div>
 );

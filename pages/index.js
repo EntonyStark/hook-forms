@@ -15,7 +15,7 @@ export const getStaticProps = async () => {
 
 export default function Home({ repoInfo }) {
   return (
-    <BaseLayout owner={repoInfo.parent.owner}>
+    <BaseLayout>
       <h1 className="title">
         Welcome to <a href={repoInfo.html_url}>hook-easy-form</a>
       </h1>
