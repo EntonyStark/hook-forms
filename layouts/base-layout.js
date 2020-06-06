@@ -1,10 +1,10 @@
-import Head from "next/head";
+import Head from 'next/head';
 
-import { Footer } from "../components/footer/footer";
+import { Footer } from '../components/footer/footer';
 
-import styles from "./base-layout.module.scss";
+import styles from './base-layout.module.scss';
 
-export const BaseLayout = ({ children, contributorsInfo }) => (
+export const BaseLayout = ({ children, owner }) => (
   <div className={styles.container}>
     <Head>
       <title>Hook Easy Form</title>
@@ -18,6 +18,6 @@ export const BaseLayout = ({ children, contributorsInfo }) => (
     </Head>
 
     <main>{children}</main>
-    <Footer contributorsInfo={contributorsInfo} />
+    <Footer owner={owner} />
   </div>
 );

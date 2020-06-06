@@ -2,7 +2,7 @@
 
 .nav {
 	width: 22rem;
-	height: 100vh;
+	min-height: 100vh;
 	border-right: 1px solid var(--border-color);
 	overflow: hidden;
 	overflow-y: scroll;
@@ -43,7 +43,7 @@
 		padding: 1rem;
 		cursor: pointer;
 		font-weight: bold;
-		  font-size: 2rem;
+		  font-size: 1.8rem;
         // font-weight: 600;
 		&:hover {
 			background-color: var(--hover-bg-color);
@@ -52,7 +52,7 @@
 	
 	&__subItem {
 		cursor: pointer;
-		font-size: 2rem;
+		font-size: 1.8rem;
 		padding: 1rem 1rem 1rem 2.2rem;
 		&:hover {
 			background-color: var(--hover-bg-color);

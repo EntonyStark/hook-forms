@@ -1,0 +1,29 @@
+.checkbox {
+	width: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: flex-end;
+	margin-bottom: 3rem;
+	font-size: 1.4rem;
+	font-family: inherit;
+
+	&__label {
+		font-size: inherit;
+		font-family: inherit;
+	}
+
+	&__box {
+		display: flex;
+		flex-direction: column;
+		position: relative;	
+		width: 65%;
+		margin-left: 4rem;
+	}
+
+	&__error {
+		position: absolute;
+		top: 100%;
+		left: 0;
+		color: var(--base-red);
+	}
+}

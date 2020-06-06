@@ -2,6 +2,7 @@ import Head from 'next/head';
 
 import { URLS } from '../constants';
 import { Navigation } from '../components/navigation/navigation';
+import { Footer } from '../components/footer/footer';
 
 import styles from './work-layout.module.scss';
 
@@ -18,7 +19,7 @@ const navItems = [
 ];
 
 
-export const WorkLayout = ({ children }) => {
+export const WorkLayout = ({ children, owner }) => {
   const packageName = 'Hook Easy Form';
   // console.log('styles wl', styles);
   return (
@@ -34,7 +35,10 @@ export const WorkLayout = ({ children }) => {
         <meta property="og:image" content="vercel.svg" />
       </Head>
       <Navigation packageName={packageName} navItems={navItems} />
-      <main>{children}</main>
+      <main>
+        {children}
+        <Footer owner={owner} border={false} />
+      </main>
     </div>
   );
 };

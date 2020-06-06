@@ -1,0 +1,47 @@
+.textArea {
+	width: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: flex-end;
+	margin-bottom: 3rem;
+	font-size: 1.4rem;
+	font-family: inherit;
+	
+	&__label {
+		font-size: inherit;
+		font-family: inherit;
+	}
+	
+	&__box {
+		display: flex;
+		flex-direction: column;
+		position: relative;	
+		width: 65%;
+		margin-left: 4rem;
+	}
+
+	&__input {
+		font-family: inherit;
+		// color: #000;
+		font-size: inherit;
+		padding: 1rem;
+		border-radius: 0.3rem;
+		background-color: #fff;
+		border: 1px solid transparent;
+		width: 100%;
+		display: block;
+		transition: all 0.3s;
+
+		&--error {
+			border: 1px solid var(--base-red);
+			border-radius: 0.4rem;
+		}
+	}
+		
+	&__error {
+		position: absolute;
+		top: 100%;
+		left: 0;
+		color: var(--base-red);
+	}
+}

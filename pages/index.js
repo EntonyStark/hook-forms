@@ -1,21 +1,21 @@
-import axios from 'axios';
+import Link from 'next/link';
 
+import { getRepoInfo } from '../actions/github';
 import { BaseLayout } from '../layouts/base-layout';
+import { URLS } from '../constants';
 
 export const getStaticProps = async () => {
-  const info = await axios.get(process.env.REPOSITORY_URL);
-  const infoContributors = await axios.get(`${process.env.REPOSITORY_URL}/contributors`);
+  const info = await getRepoInfo();
   return {
     props: {
-      repoInfo: info.data,
-      contributorsInfo: infoContributors.data,
+      repoInfo: info,
     },
   };
 };
 
-export default function Home({ repoInfo, contributorsInfo }) {
+export default function Home({ repoInfo }) {
   return (
-    <BaseLayout contributorsInfo={contributorsInfo}>
+    <BaseLayout owner={repoInfo.parent.owner}>
       <h1 className="title">
         Welcome to <a href={repoInfo.html_url}>hook-easy-form</a>
       </h1>
@@ -33,10 +33,12 @@ export default function Home({ repoInfo, contributorsInfo }) {
           <p>Description for API</p>
         </a>
 
-        <a href="https://github.com/zeit/next.js/tree/master/examples" className="card">
-          <h3>Examples &rarr;</h3>
-          <p>See how to use it</p>
-        </a>
+        <Link href={URLS.examples.simple}>
+          <div className="card">
+            <h3>Examples &rarr;</h3>
+            <p>See how to use it</p>
+          </div>
+        </Link>
 
         <a
           href="https://vercel.com/import?filter=next.js&utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"

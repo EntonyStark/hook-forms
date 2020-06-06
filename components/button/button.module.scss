@@ -1,0 +1,12 @@
+.btn {
+	// width: 100%;
+	padding: 1rem 3rem;
+	font-size: 1.4rem;
+	cursor: pointer;
+	border: none;
+	border-radius: 3px;
+
+	&:not(:last-child) {
+		margin-right: 2rem;
+	}
+}
