@@ -14,14 +14,16 @@ const navItems = [
     id: 'simple', title: 'Simple form', nested: true, link: URLS.examples.simple,
   },
   {
-    id: 'Validation', title: 'With validation', nested: true, link: URLS.examples.validation,
+    id: 'validation', title: 'With validation', nested: true, link: URLS.examples.validation,
+  },
+  {
+    id: 'constructor', title: 'Form constructor', nested: false, link: URLS.constructor,
   },
 ];
 
 
 export const WorkLayout = ({ children }) => {
   const packageName = 'Hook Easy Form';
-  // console.log('styles wl', styles);
   return (
     <div className={styles.container}>
       <Head>

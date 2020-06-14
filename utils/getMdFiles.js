@@ -13,9 +13,14 @@ export async function getMdData(fileName) {
 
   const { form } = require(`../forms/${fileName}.js`);
 
-
   return {
     form,
     md: fileContentsMd.replace(/code/gi, fileContentsJs),
   };
 }
+
+export const getMd = async () => {
+  const fullPathToMd = path.join(mdDirectory, 'md.md');
+  const fileContentsMd = fs.readFileSync(fullPathToMd, 'utf8');
+  return fileContentsMd;
+};

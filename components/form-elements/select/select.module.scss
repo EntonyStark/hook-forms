@@ -10,14 +10,18 @@
 	&__label {
 		font-size: inherit;
 		font-family: inherit;
+		margin-right: 4rem;
 	}
 
 	&__box {
 		display: flex;
 		flex-direction: column;
 		position: relative;	
-		width: 65%;
-		margin-left: 4rem;
+		width: 100%;
+
+		&--label {
+			width: 65%;
+		}
 	}
 
 	&__input {
@@ -31,11 +35,6 @@
 		width: 100%;
 		display: block;
 		transition: all 0.3s;
-
-		// &--error {
-		// 	border: 1px solid var(--base-red);
-		// 	border-radius: 0.4rem;
-		// }
 	}
 
 	&__error {

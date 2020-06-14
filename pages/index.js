@@ -40,13 +40,12 @@ export default function Home({ repoInfo }) {
           </div>
         </Link>
 
-        <a
-          href="https://vercel.com/import?filter=next.js&utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          className="card"
-        >
-          <h3>Form constructor &rarr;</h3>
-          <p>Create your form with us</p>
-        </a>
+        <Link href={URLS.constructor}>
+          <div className="card">
+            <h3>Form constructor &rarr;</h3>
+            <p>Create your form with us</p>
+          </div>
+        </Link>
       </div>
 
       <style jsx>

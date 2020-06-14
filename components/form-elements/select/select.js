@@ -2,16 +2,16 @@ import { classNames } from '../../../utils/classNames';
 import styles from './select.module.scss';
 
 export default ({
-  label, placeholder, error, value, onChange, touched, name, options = [],
+  label, error, value, onChange, touched, name, options = [], className,
 }) => (
-  <div className={styles.select}>
+  <div className={classNames(styles.select, className)}>
     {label && <p className={styles.select__label}>{label}</p>}
     <div className={classNames({
       [styles.select__box]: true,
-      // [styles['input__input--error']]: !!(error && touched),
+      [styles['select__box--label']]: !!label,
     })}
     >
-      <select name={name} onChange={onChange} value={value} placeholder={placeholder} className={styles.select__input}>
+      <select name={name} onChange={onChange} value={value} className={styles.select__input}>
         {options.map((el) => <option key={el.value} value={el.value}>{el.title}</option>)}
       </select>
 

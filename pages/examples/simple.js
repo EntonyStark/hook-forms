@@ -12,7 +12,6 @@ export const getStaticProps = async () => {
   const { md, form } = await getMdData(examples.simple);
   return {
     props: {
-      repoInfo: {},
       md,
       form,
     },

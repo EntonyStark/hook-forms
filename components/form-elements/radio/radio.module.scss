@@ -10,13 +10,13 @@
 	&__label {
 		font-size: inherit;
 		font-family: inherit;
+		margin-right: 4rem;
 	}
 
 	&__box {
 		display: flex;
 		position: relative;	
 		width: 65%;
-		margin-left: 4rem;
 
 		label {
 			display: flex;

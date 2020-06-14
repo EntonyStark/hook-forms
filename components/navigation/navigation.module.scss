@@ -44,11 +44,20 @@
 		padding: 1rem;
 		cursor: pointer;
 		font-weight: bold;
-		  font-size: 1.8rem;
-        // font-weight: 600;
+		font-size: 1.8rem;
 		&:hover {
 			background-color: var(--hover-bg-color);
 		}
+
+		&--active {
+			background-color: var(--hover-bg-color);
+		}
+	}
+
+	&__itemNoLink {
+		padding: 1rem;
+		font-weight: bold;
+		font-size: 1.8rem;
 	}
 	
 	&__subItem {
@@ -58,5 +67,14 @@
 		&:hover {
 			background-color: var(--hover-bg-color);
 		}
+
+		&--active {
+			background-color: var(--hover-bg-color);
+		}
+	}
+
+	&__subItemNoLink {
+		font-size: 1.8rem;
+		padding: 1rem 1rem 1rem 2.2rem;
 	}
 }

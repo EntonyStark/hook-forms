@@ -1,5 +1,6 @@
 export const URLS = {
   home: '/',
+  constructor: '/constructor',
   examples: {
     simple: '/examples/simple',
     validation: '/examples/validation',
@@ -32,3 +33,23 @@ export const ownerGitHubInfo = {
   site_admin: false,
   contributions: 22,
 };
+
+
+export const INPUT = 'input';
+export const RADIO = 'radio';
+export const SELECT = 'select';
+export const CHECKBOX = 'checkbox';
+export const TEXTAREA = 'textarea';
+
+export const constructorFormElement = {
+  id: '0', name: '', value: '', options: {}, validate: {},
+};
+
+export const constructorElementsOptions = [
+  { value: '', title: '' },
+  { value: INPUT, title: 'Input' },
+  { value: RADIO, title: 'Radio' },
+  { value: SELECT, title: 'Select' },
+  { value: CHECKBOX, title: 'Checkbox' },
+  { value: TEXTAREA, title: 'Textarea' },
+];
