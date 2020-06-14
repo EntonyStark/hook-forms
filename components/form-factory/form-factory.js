@@ -6,13 +6,16 @@ import {
 import { CustomButton } from '../button/button';
 import { Values } from '../values/values';
 
+import {
+  CHECKBOX, SELECT, RADIO, TEXTAREA,
+} from '../../constants';
 import styles from './form-factory.module.scss';
 
 export const FormFactory = ({
   form, valuesBlock = true,
 }) => {
   const {
-    formArray, updateEvent, submitEvent, resetEvent,
+    formArray, updateEvent, submitEvent, resetEvent, setValueManually,
   } = easyHook({ initialForm: form });
 
   const submit = (v) => {
@@ -26,61 +29,65 @@ export const FormFactory = ({
       <div className={styles.factory__formBox}>
         <form onSubmit={submitEvent(submit)} className={styles.factory__form}>
           {formArray.map((item) => {
-            if (item.options.type === 'checkbox') {
+            if (item.options.type === CHECKBOX) {
               return (
-                <CustomCheckbox
-                  key={item.name}
-                  name={item.name}
-                  value={item.value}
-                  onChange={updateEvent}
-                  label={item.options.label}
-                />
+                <div className={styles.factory__formItem} key={item.name}>
+                  <p>{item.options.label}</p>
+                  <CustomCheckbox
+                    name={item.name}
+                    value={item.value}
+                    onChange={updateEvent}
+                  />
+                </div>
               );
             }
-            if (item.options.type === 'text-area') {
+            if (item.options.type === TEXTAREA) {
               return (
-                <CustomTextArea
-                  key={item.name}
-                  name={item.name}
-                  value={item.value}
-                  onChange={updateEvent}
-                  label={item.options.label}
-                />
+                <div className={styles.factory__formItem} key={item.name}>
+                  <p>{item.options.label}</p>
+                  <CustomTextArea
+                    name={item.name}
+                    value={item.value}
+                    onChange={updateEvent}
+                  />
+                </div>
               );
             }
-            if (item.options.type === 'select') {
+            if (item.options.type === SELECT) {
               return (
-                <CustomSelect
-                  key={item.name}
-                  name={item.name}
-                  value={item.value}
-                  onChange={updateEvent}
-                  label={item.options.label}
-                  options={item.options.options}
-                />
+                <div className={styles.factory__formItem} key={item.name}>
+                  <p>{item.options.label}</p>
+                  <CustomSelect
+                    name={item.name}
+                    onChangeEvent={(el) => setValueManually(item.name, el.value)}
+                    options={item.options.options}
+                  />
+                </div>
               );
             }
-            if (item.options.type === 'radio') {
+            if (item.options.type === RADIO) {
               return (
-                <CustomRadio
-                  key={item.name}
-                  name={item.name}
-                  value={item.value}
-                  onChange={updateEvent}
-                  label={item.options.label}
-                  buttons={item.options.buttons}
-                />
+                <div className={styles.factory__formItem} key={item.name}>
+                  <p>{item.options.label}</p>
+                  <CustomRadio
+                    name={item.name}
+                    value={item.value}
+                    onChange={updateEvent}
+                    buttons={item.options.buttons}
+                  />
+                </div>
               );
             }
 
             return (
-              <CustomInput
-                key={item.name}
-                name={item.name}
-                value={item.value}
-                onChange={updateEvent}
-                label={item.options.label}
-              />
+              <div className={styles.factory__formItem} key={item.name}>
+                <p>{item.options.label}</p>
+                <CustomInput
+                  name={item.name}
+                  value={item.value}
+                  onChange={updateEvent}
+                />
+              </div>
             );
           })}
           <div className={styles.factory__btnBox}>
@@ -90,7 +97,8 @@ export const FormFactory = ({
         </form>
 
         {valuesBlock && (
-        <><h1 className={styles.factory__title}>Values</h1>
+        <>
+          <h1 className={styles.factory__title}>Values</h1>
           <Values array={formArray} />
         </>
         )}

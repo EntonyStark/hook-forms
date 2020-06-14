@@ -39,7 +39,6 @@ export const form = [
       label: 'Role',
       type: 'select',
       options: [
-        { title: '', value: '' },
         { title: 'User', value: 'user' },
         { title: 'Administrator', value: 'admin' },
         { title: 'Moderator', value: 'moderator' },
@@ -59,7 +58,7 @@ export const form = [
     value: '',
     options: {
       label: 'Bio',
-      type: 'text-area',
+      type: 'textarea',
     },
   },
 ];

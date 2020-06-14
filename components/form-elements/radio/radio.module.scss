@@ -2,34 +2,24 @@
 	width: 100%;
 	display: flex;
 	align-items: center;
-	justify-content: flex-end;
 	margin-bottom: 3rem;
 	font-size: 1.4rem;
 	font-family: inherit;
+	position: relative;
 
 	&__label {
 		font-size: inherit;
 		font-family: inherit;
-		margin-right: 4rem;
-	}
-
-	&__box {
+		margin-right: 2rem;
+		cursor: pointer;
+		
 		display: flex;
-		position: relative;	
-		width: 65%;
-
-		label {
-			display: flex;
-			align-items: center;
-			cursor: pointer;
-			&:not(:last-child) {
-				margin-right: 1rem;
-			}
-		}
+    align-items: center;
 	}
-
+	
 	&__input {
 		margin: 0 0 0 1rem;
+		cursor: pointer;
 	}
 
 	&__error {

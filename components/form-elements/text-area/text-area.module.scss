@@ -1,47 +1,49 @@
-.textArea {
+.textArea {	
 	width: 100%;
-	display: flex;
-	align-items: center;
-	justify-content: flex-end;
 	margin-bottom: 3rem;
 	font-size: 1.4rem;
 	font-family: inherit;
+	position: relative;
+	display: flex;
+	flex-direction: column;
 	
 	&__label {
 		font-size: inherit;
 		font-family: inherit;
-		margin-right: 4rem;
-	}
-	
-	&__box {
-		display: flex;
-		flex-direction: column;
-		position: relative;	
-		width: 65%;
+		margin: 0 0 1rem;
+		width: fit-content;
 	}
 
 	&__input {
 		font-family: inherit;
-		// color: #000;
 		font-size: inherit;
 		padding: 1rem;
 		border-radius: 0.3rem;
-		background-color: #fff;
+		background-color: var(--base-white);
 		border: 1px solid transparent;
 		width: 100%;
 		display: block;
 		transition: all 0.3s;
-
+		box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+		outline: none;
+		
 		&--error {
 			border: 1px solid var(--base-red);
 			border-radius: 0.4rem;
+
+			&:hover,
+			&:focus {
+				box-shadow: 0 0 10px var(--base-red);
+			}
 		}
 	}
 		
 	&__error {
-		position: absolute;
-		top: 100%;
-		left: 0;
 		color: var(--base-red);
+		position: absolute;
+		left: 0;
+		top: 100%;
+		font-weight: 100;
+    font-size: inherit;
 	}
 }
