@@ -90,7 +90,7 @@ export default ({ md }) => {
   // };
 
   const toMarkDown = () => JSON.stringify(form.map(({ id, ...rest }) => rest), (key, value) => {
-    console.log('value', value);
+    // console.log('value', value);
     if (typeof value === 'function') {
       return value.toString();
     }
@@ -101,7 +101,7 @@ export default ({ md }) => {
     navigator.clipboard.writeText(toMarkDown());
     setCopied(true);
   };
-  console.log('form', toMarkDown());
+  // console.log('form', toMarkDown());
   return (
     <WorkLayout>
       <div className={styles.constructor}>
