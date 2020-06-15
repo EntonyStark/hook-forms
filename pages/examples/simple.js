@@ -4,21 +4,21 @@ import { examples } from '../../constants';
 
 import { FormFactory } from '../../components/form-factory/form-factory';
 
-import { MarkdownBlock } from '../../components/code/react-markdown';
+import { CodeBlock } from '../../components/code/code';
 
 import styles from '../../styles/examples.module.scss';
 
 export const getStaticProps = async () => {
-  const { md, form } = await getMdData(examples.simple);
+  const { form, fileContents } = await getMdData(examples.simple);
   return {
     props: {
-      md,
       form,
+      fileContents,
     },
   };
 };
 
-export default ({ md, form }) => (
+export default ({ form, fileContents }) => (
   <WorkLayout>
     <div className={styles.examples}>
       <h1 className={styles.examples__title}>Simple Form Example</h1>
@@ -29,7 +29,8 @@ export default ({ md, form }) => (
 
       <FormFactory form={form} />
 
-      <MarkdownBlock md={md} />
+      <CodeBlock value={fileContents} />
+
     </div>
   </WorkLayout>
 );

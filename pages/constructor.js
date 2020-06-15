@@ -1,30 +1,27 @@
 import { useState } from 'react';
 
 import { classNames } from '../utils/classNames';
-import { getMd } from '../utils/getMdFiles';
 import { uuid } from '../utils/uuid';
 
 import { WorkLayout } from '../layouts/work-layout';
 import { CustomButton } from '../components/button/button';
 import { CustomInput, CustomSelect } from '../components/form-elements';
 
-import { MarkdownBlock } from '../components/code/react-markdown';
-
 import {
   constructorFormElement, constructorElementsOptions, CHECKBOX, RADIO, SELECT,
 } from '../constants';
 import styles from '../styles/constructor.module.scss';
 
-export const getStaticProps = async () => {
-  const md = await getMd();
-  return {
-    props: {
-      md,
-    },
-  };
-};
+// export const getStaticProps = async () => {
+//   const md = await getMd();
+//   return {
+//     props: {
+//       md,
+//     },
+//   };
+// };
 
-export default ({ md }) => {
+export default () => {
   const [form, setForm] = useState([constructorFormElement]);
   const [showMdBox, setShowMdBox] = useState(false);
   const [copied, setCopied] = useState(false);
@@ -159,7 +156,7 @@ export default ({ md }) => {
             </div>
           ))}
         </div>
-        {showMdBox && <MarkdownBlock md={md.replace(/code/gi, toMarkDown())} />}
+        {showMdBox && <div>Code will be here</div>}
       </div>
     </WorkLayout>
   );
