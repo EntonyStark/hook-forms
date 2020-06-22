@@ -8,6 +8,15 @@ import styles from './work-layout.module.scss';
 
 const navItems = [
   {
+    id: 'doc', title: 'Documentation', nested: false, link: false,
+  },
+  {
+    id: 'api', title: 'API', nested: true, link: URLS.doc.api,
+  },
+  {
+    id: 'props', title: 'Props', nested: true, link: URLS.doc.props,
+  },
+  {
     id: 'examples', title: 'Examples', nested: false, link: false,
   },
   {

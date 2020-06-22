@@ -5,6 +5,10 @@ export const URLS = {
     simple: '/examples/simple',
     validation: '/examples/validation',
   },
+  doc: {
+    api: '/doc/api',
+    props: '/doc/props',
+  },
 };
 
 export const examples = {

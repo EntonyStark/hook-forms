@@ -28,10 +28,12 @@ export default function Home({ repoInfo }) {
           <p>Start here :)</p>
         </a>
 
-        <a href="https://nextjs.org/learn" className="card">
-          <h3>Documentation &rarr;</h3>
-          <p>Description for API</p>
-        </a>
+        <Link href={URLS.doc.api}>
+          <div className="card">
+            <h3>Documentation &rarr;</h3>
+            <p>Description for API</p>
+          </div>
+        </Link>
 
         <Link href={URLS.examples.simple}>
           <div className="card">
