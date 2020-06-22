@@ -88,6 +88,7 @@ export default function Home({ repoInfo }) {
           }
 
           .card {
+            cursor: pointer;
             margin: 1rem;
             flex-basis: 45%;
             padding: 1.6rem;

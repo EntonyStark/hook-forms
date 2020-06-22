@@ -22,7 +22,6 @@ export const FormFactory = ({
     alert(JSON.stringify(v, null, 2));
     resetEvent();
   };
-
   return (
     <>
       <h1 className={styles.factory__title}>Form</h1>
@@ -37,6 +36,8 @@ export const FormFactory = ({
                     name={item.name}
                     value={item.value}
                     onChange={updateEvent}
+                    error={item.error}
+                    touched={item.touched}
                   />
                 </div>
               );
@@ -49,6 +50,8 @@ export const FormFactory = ({
                     name={item.name}
                     value={item.value}
                     onChange={updateEvent}
+                    error={item.error}
+                    touched={item.touched}
                   />
                 </div>
               );
@@ -61,6 +64,8 @@ export const FormFactory = ({
                     name={item.name}
                     onChangeEvent={(el) => setValueManually(item.name, el.value)}
                     options={item.options.options}
+                    error={item.error}
+                    touched={item.touched}
                   />
                 </div>
               );
@@ -74,6 +79,8 @@ export const FormFactory = ({
                     value={item.value}
                     onChange={updateEvent}
                     buttons={item.options.buttons}
+                    error={item.error}
+                    touched={item.touched}
                   />
                 </div>
               );
@@ -86,6 +93,8 @@ export const FormFactory = ({
                   name={item.name}
                   value={item.value}
                   onChange={updateEvent}
+                  error={item.error}
+                  touched={item.touched}
                 />
               </div>
             );

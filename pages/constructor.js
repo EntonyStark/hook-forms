@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { classNames } from '../utils/classNames';
 import { uuid } from '../utils/uuid';
 
+import { CodeBlock } from '../components/code/code';
 import { WorkLayout } from '../layouts/work-layout';
 import { CustomButton } from '../components/button/button';
 import { CustomInput, CustomSelect } from '../components/form-elements';
@@ -135,7 +136,7 @@ export default () => {
                   <CustomSelect
                     value={el.options.type}
                     options={constructorElementsOptions}
-                    onChange={(e) => setElementType(el.id, e.target.value)}
+                    onChangeEvent={(e) => setElementType(el.id, e.value)}
                     placeholder="Field type"
                   />
                 </div>
@@ -156,7 +157,7 @@ export default () => {
             </div>
           ))}
         </div>
-        {showMdBox && <div>Code will be here</div>}
+        {showMdBox && <CodeBlock value={toMarkDown()} />}
       </div>
     </WorkLayout>
   );

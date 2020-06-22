@@ -6,7 +6,7 @@ import styles from './react-markdown.module.scss';
 
 const customStyle = {
   width: '100%',
-  padding: '0 1em 1em 1em',
+  // padding: '0 1em 1em 1em',
   borderRadius: 3,
 };
 

@@ -6,19 +6,19 @@ import { FormFactory } from '../../components/form-factory/form-factory';
 
 import { CodeBlock } from '../../components/code/code';
 
+import { form } from '../../forms/simple';
 import styles from '../../styles/examples.module.scss';
 
 export const getStaticProps = async () => {
-  const { form, fileContents } = await getMdData(examples.simple);
+  const { fileContents } = await getMdData(examples.simple);
   return {
     props: {
-      form,
       fileContents,
     },
   };
 };
 
-export default ({ form, fileContents }) => (
+export default ({ fileContents }) => (
   <WorkLayout>
     <div className={styles.examples}>
       <h1 className={styles.examples__title}>Simple Form Example</h1>

@@ -35,14 +35,14 @@ export const ownerGitHubInfo = {
 };
 
 
-export const INPUT = 'input';
+export const INPUT = 'text';
 export const RADIO = 'radio';
 export const SELECT = 'select';
 export const CHECKBOX = 'checkbox';
 export const TEXTAREA = 'textarea';
 
 export const constructorFormElement = {
-  id: '0', name: '', value: '', options: {}, validate: {},
+  id: '0', name: '', value: '', options: {}, validate: { required(v) { return v.trim() === ''; } },
 };
 
 export const constructorElementsOptions = [

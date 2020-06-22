@@ -14,5 +14,10 @@
 	&__desc {
 		width: 100%;
 		margin-bottom: 2rem;
+
+		span {
+			font-style: italic;
+			font-weight: bold;
+		}
 	}
 }
