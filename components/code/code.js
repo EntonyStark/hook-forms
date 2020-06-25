@@ -10,9 +10,9 @@ const customStyle = {
   borderRadius: 3,
 };
 
-export const CodeBlock = memo(({ language = 'javascript', value }) => (
+export const CodeBlock = memo(({ language = 'javascript', value, title = true }) => (
   <>
-    <h1 className={styles.markdownBox__title}>Form Code</h1>
+    {title && <h1 className={styles.markdownBox__title}>Form Code</h1>}
     <SyntaxHighlighter language={language} style={coy} customStyle={customStyle}>
       {value}
     </SyntaxHighlighter>
