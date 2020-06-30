@@ -46,4 +46,24 @@
 		font-weight: 300;
 		margin-bottom: 0.5rem;
 	}
+
+	&__table {
+		width: 100%;
+    border: 1px solid var(--base-white);
+		border-collapse: collapse;
+		
+		tr, td, th {
+			border: 1px solid var(--base-white);
+			text-align: center;
+			padding: 0 1rem;
+		}
+
+		th:not(:last-child) {
+			width: 11%;
+		}
+
+		td:last-child {
+			text-align: left;
+		}
+	}
 }
