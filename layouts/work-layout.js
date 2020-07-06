@@ -8,6 +8,9 @@ import styles from './work-layout.module.scss';
 
 const navItems = [
   {
+    id: 'get-started', title: 'Getting started', nested: false, link: URLS.getStarted,
+  },
+  {
     id: 'doc', title: 'Documentation', nested: false, link: false,
   },
   {

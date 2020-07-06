@@ -1,6 +1,7 @@
 export const URLS = {
   home: '/',
   constructor: '/constructor',
+  getStarted: '/get-started',
   examples: {
     simple: '/examples/simple',
     validation: '/examples/validation',

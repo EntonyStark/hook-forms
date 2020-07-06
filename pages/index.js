@@ -23,10 +23,12 @@ export default function Home({ repoInfo }) {
       <p className="description">The best way to manage your form state with hooks.</p>
 
       <div className="grid">
-        <a href="https://nextjs.org/docs" className="card">
-          <h3>Get started &rarr;</h3>
-          <p>Start here :)</p>
-        </a>
+        <Link href={URLS.getStarted}>
+          <div className="card">
+            <h3>Get started &rarr;</h3>
+            <p>Start here :)</p>
+          </div>
+        </Link>
 
         <Link href={URLS.doc.api}>
           <div className="card">
