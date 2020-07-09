@@ -17,6 +17,8 @@ export const examples = {
   validation: 'validation',
 };
 
+export const packageTitle = 'Hook Easy Form';
+
 export const ownerGitHubInfo = {
   login: 'ArtemStepanovDev',
   id: 55385736,
