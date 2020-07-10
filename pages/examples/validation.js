@@ -3,7 +3,7 @@ import { WorkLayout } from '../../layouts/work-layout';
 import { getMdData } from '../../utils/getMdFiles';
 import { examples } from '../../constants';
 
-import { FormFactory } from '../../components/form-factory/form-factory';
+import { FormFactory } from '../../components/form-elements/factory/factory';
 
 import { CodeBlock } from '../../components/code/code';
 

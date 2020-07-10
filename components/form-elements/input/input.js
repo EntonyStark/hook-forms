@@ -1,23 +1,22 @@
 import { classNames } from '../../../utils/classNames';
-import styles from './input.module.scss';
 
 export default ({
-  label, placeholder, error, value, type, onChange, touched, name, className,
+  name, type = 'text', error, touched, placeholder, label, value, onChange,
 }) => (
-  <div className={classNames(styles.customInput, className)}>
-    {label && <label className={styles.customInput__label} htmlFor={name}>{label}</label>}
+  <div className="form-group">
+    {label && <label htmlFor={name}>{label}</label>}
     <input
       id={name}
-      type={type}
       name={name}
+      type={type}
       value={value}
       onChange={onChange}
-      className={classNames({
-        [styles.customInput__input]: true,
-        [styles['customInput__input--error']]: !!(error && touched),
-      })}
       placeholder={placeholder}
+      className={classNames({
+        'form-control': true,
+        'is-invalid': !!(error && touched),
+      })}
     />
-    {error && touched && <span className={styles.customInput__error}>{error}</span>}
+    <div className="invalid-feedback">{error}</div>
   </div>
 );

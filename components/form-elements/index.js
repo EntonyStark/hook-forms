@@ -3,6 +3,7 @@ import CustomRadio from './radio/radio';
 import CustomSelect from './select/select';
 import CustomCheckbox from './checkbox/checkbox';
 import CustomTextArea from './text-area/text-area';
+import CustomSelectV2 from './select/selectV2';
 
 export {
   CustomInput,
@@ -10,4 +11,5 @@ export {
   CustomSelect,
   CustomCheckbox,
   CustomTextArea,
+  CustomSelectV2,
 };

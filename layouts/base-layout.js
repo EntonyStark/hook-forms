@@ -32,7 +32,7 @@ export const BaseLayout = ({ children }) => {
       <div className="container">
         {React.cloneElement(children, { repoInfo })}
       </div>
-      {/* <Footer /> */}
+      <Footer />
     </>
   );
 };

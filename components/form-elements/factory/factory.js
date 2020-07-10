@@ -1,15 +1,14 @@
 import easyHook from 'hook-easy-form';
 
 import {
-  CustomInput, CustomRadio, CustomSelect, CustomCheckbox, CustomTextArea,
-} from '../form-elements';
-import { CustomButton } from '../button/button';
-import { Values } from '../values/values';
+  CustomInput, CustomRadio, CustomSelectV2, CustomCheckbox, CustomTextArea,
+} from '..';
+import { Values } from '../../values/values';
 
 import {
   CHECKBOX, SELECT, RADIO, TEXTAREA,
-} from '../../constants';
-import styles from './form-factory.module.scss';
+} from '../../../constants';
+import styles from './factory.module.scss';
 
 export const FormFactory = ({
   form, valuesBlock = true,
@@ -60,7 +59,7 @@ export const FormFactory = ({
               return (
                 <div className={styles.factory__formItem} key={item.name}>
                   <p>{item.options.label}</p>
-                  <CustomSelect
+                  <CustomSelectV2
                     name={item.name}
                     onChangeEvent={(el) => setValueManually(item.name, el.value)}
                     options={item.options.options}
@@ -100,8 +99,8 @@ export const FormFactory = ({
             );
           })}
           <div className={styles.factory__btnBox}>
-            <CustomButton type="submit">Submit</CustomButton>
-            <CustomButton onClick={resetEvent}>Clear</CustomButton>
+            <button type="submit">Submit</button>
+            <button onClick={resetEvent}>Clear</button>
           </div>
         </form>
 
