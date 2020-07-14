@@ -48,9 +48,15 @@ export const SELECT = 'select';
 export const CHECKBOX = 'checkbox';
 export const TEXTAREA = 'textarea';
 
-// validate: { required(v) { return v.trim() === ''; }  }
 export const constructorFormElement = {
-  id: '0', name: '', value: '', options: { type: INPUT },
+  id: '0',
+  name: '',
+  value: '',
+  options: { type: INPUT, label: 'Default Label', countOfOptions: 0 },
+  validate: {},
+  defaultUserValidate: { required: false, maxLength: '', pattern: '' },
+  includeValidate: false,
+  countOfElement: 1,
 };
 
 export const constructorElementsOptions = [
@@ -61,4 +67,4 @@ export const constructorElementsOptions = [
   { value: TEXTAREA, text: 'Textarea' },
 ];
 
-export const constructorBlockHeight = 500;
+export const constructorBlockHeight = 550;

@@ -4,23 +4,21 @@ import styles from './radio.module.scss';
 export default ({
   error, touched, buttons = [], onChange, name, value,
 }) => (
-  <div className={styles.radio}>
+  <>
     {buttons.map((el) => (
-      <label htmlFor={el.value} key={el.value} className={styles.radio__label}>
-        {el.title}
+      <div className="form-check form-check-inline" key={el.value}>
         <input
+          className="form-check-input"
           type="radio"
-          id={el.value}
-          key={el.value}
           name={name}
+          id={el.value}
           value={el.value}
           checked={value === el.value}
           onChange={onChange}
-          className={styles.radio__input}
         />
-
-      </label>
+        <label className="form-check-label" htmlFor={el.value}>{el.title}</label>
+      </div>
     ))}
     {error && touched && <span className={styles.radio__error}>{error}</span>}
-  </div>
+  </>
 );

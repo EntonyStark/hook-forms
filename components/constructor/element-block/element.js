@@ -1,18 +1,94 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
+import { OverflowBox } from '../overflow-box';
 import { CustomInput, CustomSelectV2, CustomCheckbox } from '../../form-elements';
-import { constructorBlockHeight, constructorElementsOptions, INPUT } from '../../../constants';
+import {
+  constructorElementsOptions, INPUT, RADIO, SELECT, CHECKBOX,
+} from '../../../constants';
 
 export const Element = ({
-  element, removeElement, setElementName, setElementType, saveElement,
+  element,
+  removeElement,
+  saveElement,
 }) => {
-  const [validations, setValidations] = useState(false);
+  const [currentElement, setCurrentElement] = useState(null);
 
-  const onChangeNameEvent = (e) => setElementName(e.target.value);
+  useEffect(() => {
+    setCurrentElement(element);
+  }, [element]);
 
-  const onChangeTypeEvent = (e) => setElementType(e.target.value);
+  const onChangeNameEvent = (e) => {
+    const { value } = e.target;
+    setCurrentElement((ps) => ({ ...ps, name: value }));
+  };
 
-  const onChangeValidationEvent = (e) => setValidations(e.target.checked);
+  const onChangeTypeEvent = (e) => {
+    const type = e.target.value;
+    setCurrentElement((prevState) => {
+      switch (type) {
+        case RADIO: {
+          return {
+            ...prevState,
+            value: '',
+            options: { ...prevState.options, type, buttons: [] },
+          };
+        }
+        case SELECT: {
+          return {
+            ...prevState,
+            value: '',
+            options: { ...prevState.options, type, options: [] },
+          };
+        }
+        case CHECKBOX: {
+          return {
+            ...prevState,
+            value: false,
+            options: { ...prevState.options, type },
+          };
+        }
+        default: {
+          return {
+            ...prevState,
+            value: '',
+            options: { ...prevState.options, type },
+          };
+        }
+      }
+    });
+  };
+
+  const onChangeLabelEvent = (e) => {
+    const { value } = e.target;
+    setCurrentElement((ps) => ({ ...ps, options: { ...ps.options, label: value } }));
+  };
+
+  const toggleElementValidation = (e) => {
+    const { checked } = e.target;
+
+    setCurrentElement((prevState) => ({ ...prevState, includeValidate: checked }));
+  };
+
+  const changeElementValidation = (e) => {
+    const {
+      name, checked, value, type,
+    } = e.target;
+
+    setCurrentElement((prevState) => ({
+      ...prevState,
+      defaultUserValidate: {
+        ...prevState.defaultUserValidate,
+        [name]: type === CHECKBOX ? checked : value,
+      },
+    }));
+  };
+
+  const onChangeOptionsCountEvent = (e) => {
+    const { value } = e.target;
+    setCurrentElement((ps) => ({ ...ps, options: { ...ps.options, countOfOptions: value } }));
+  };
+
+  const saveElementEvent = () => saveElement(currentElement);
 
   return (
     <div className="col-md-6">
@@ -21,40 +97,108 @@ export const Element = ({
       <div>
         <div className="d-flex my-3">
           <blockquote className="blockquote mr-auto">
-            <p className="mb-0">You can manage field in form </p>
+            <p className="mb-0">2. Customize field here</p>
           </blockquote>
-          {element && <button type="button" onClick={removeElement} className="btn btn-outline-danger btn-sm">Cancel</button>}
+          {currentElement && <button type="button" onClick={removeElement} className="btn btn-outline-danger btn-sm">Cancel</button>}
         </div>
-        {element && (
-        <div className="card bg-light overflow-auto" style={{ maxHeight: constructorBlockHeight, minHeight: constructorBlockHeight }}>
+        {currentElement && (
+        <OverflowBox className="card bg-light">
           <div className="card-body">
-            <CustomInput
-              name="element-name"
-              label="Input name"
-              value={element ? element.name : ''}
-              onChange={onChangeNameEvent}
-              placeholder="Enter input name"
-            />
+            <div className="form-row">
+              <div className="col">
+                <CustomInput
+                  name="element-name"
+                  label="Input name"
+                  value={currentElement ? currentElement.name : ''}
+                  onChange={onChangeNameEvent}
+                  placeholder="Enter input name"
+                />
+              </div>
+              <div className="col">
+                <CustomInput
+                  name="qwe"
+                  label="Input Label"
+                  value={currentElement ? currentElement.options.label : ''}
+                  onChange={onChangeLabelEvent}
+                  placeholder="Enter input label"
+                />
+              </div>
+            </div>
 
-            <CustomSelectV2
-              name="element-type"
-              label="Input type"
-              value={element ? element.options.type : INPUT}
-              onChange={onChangeTypeEvent}
-              options={constructorElementsOptions}
-            />
+            <div className="form-row">
+              <div className="col">
+                <CustomSelectV2
+                  name="element-type"
+                  label="Input type"
+                  value={currentElement ? currentElement.options.type : INPUT}
+                  onChange={onChangeTypeEvent}
+                  options={constructorElementsOptions}
+                />
+              </div>
+              <div className="col">
+                {currentElement
+                && currentElement.options
+                && (currentElement.options.type === RADIO || currentElement.options.type === SELECT)
+                && (
+                <CustomInput
+                  type="number"
+                  name="options-count"
+                  label="Count of options"
+                  value={currentElement ? currentElement.options.countOfOptions : 0}
+                  onChange={onChangeOptionsCountEvent}
+                  placeholder="Count"
+                />
+                )}
+              </div>
+            </div>
 
             <CustomCheckbox
               name="validation"
               label="Should include validation ?"
-              value={validations}
-              onChange={onChangeValidationEvent}
+              value={currentElement.includeValidate}
+              onChange={toggleElementValidation}
             />
 
-            {validations ? 'open' : 'close'}
-            <button type="button" onClick={saveElement} className="btn btn-primary btn-lg btn-block btn-sm">Save</button>
+            {currentElement.includeValidate && (
+              <div className="card mb-3">
+                <div className="card-body">
+                  <CustomCheckbox
+                    name="required"
+                    label="Required"
+                    value={currentElement.defaultUserValidate.required}
+                    onChange={changeElementValidation}
+                  />
+                  <div className="form-row">
+                    <div className="col">
+                      <CustomInput
+                        type="number"
+                        name="maxLength"
+                        label="Max Length"
+                        value={currentElement.defaultUserValidate.maxLength}
+                        onChange={changeElementValidation}
+                      />
+                    </div>
+                    <div className="col">
+                      <CustomInput
+                        name="pattern"
+                        label="Pattern"
+                        value={currentElement.defaultUserValidate.pattern}
+                        onChange={changeElementValidation}
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            )}
+            <button
+              type="button"
+              onClick={saveElementEvent}
+              className="btn btn-primary btn-lg btn-block btn-sm mb-3"
+            >
+              Save
+            </button>
           </div>
-        </div>
+        </OverflowBox>
         )}
       </div>
     </div>

@@ -60,7 +60,7 @@ export const DNDElement = ({
             <span className="mr-2">
               <i className="fas fa-ellipsis-v" /><i className="fas fa-ellipsis-v" />
             </span>
-            {text || 'New field'}
+            {text}
           </div>
           <div>
             <button type="button" className="btn btn-outline-info btn-sm mr-2" onClick={editClick}>Edit</button>
