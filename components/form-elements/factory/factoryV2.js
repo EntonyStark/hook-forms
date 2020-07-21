@@ -22,7 +22,6 @@ export const FormFactoryV2 = ({
 
   const submit = (v) => {
     alert(JSON.stringify(v, null, 2));
-    resetEvent();
   };
   return (
     <form onSubmit={submitEvent(submit)}>
@@ -93,9 +92,13 @@ export const FormFactoryV2 = ({
           />
         );
       })}
-      <div className="btn-group btn-block" role="group" aria-label="Control box">
-        <button type="submit" className="btn btn-primary btn-sm">Submit</button>
-        <button type="button" className="btn btn-primary btn-sm" onClick={resetEvent}>Clear</button>
+      <div className="form-row" role="group" aria-label="Control box">
+        <div className="col">
+          <button type="submit" className="btn btn-primary btn-sm btn-block">Submit</button>
+        </div>
+        <div className="col">
+          <button type="button" className="btn btn-primary btn-sm btn-block" onClick={resetEvent}>Clear</button>
+        </div>
       </div>
     </form>
   );

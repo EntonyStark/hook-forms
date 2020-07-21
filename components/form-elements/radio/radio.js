@@ -1,5 +1,4 @@
-// import { classNames } from '../../../utils/classNames';
-import styles from './radio.module.scss';
+import { classNames } from '../../../utils/classNames';
 
 export default ({
   error, touched, buttons = [], onChange, name, value,
@@ -8,7 +7,10 @@ export default ({
     {buttons.map((el) => (
       <div className="form-check form-check-inline" key={el.value}>
         <input
-          className="form-check-input"
+          className={classNames({
+            'form-check-input': true,
+            'is-invalid': !!(error && touched),
+          })}
           type="radio"
           name={name}
           id={el.value}
@@ -19,6 +21,6 @@ export default ({
         <label className="form-check-label" htmlFor={el.value}>{el.title}</label>
       </div>
     ))}
-    {error && touched && <span className={styles.radio__error}>{error}</span>}
+    <div className="invalid-feedback" style={{ display: error && touched ? 'block' : 'none' }}>{error}</div>
   </>
 );

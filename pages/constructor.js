@@ -7,9 +7,8 @@ import { Element } from '../components/constructor/element-block/element';
 import { CodeBox } from '../components/constructor/code-block/code';
 import { ExampleBox } from '../components/constructor/example-block/example';
 
-import { constructorFormElement } from '../constants';
-import { uuid } from '../utils/uuid';
 import { generateForm } from '../utils/generateStingElement';
+import { generateNewElement, generateOptions } from '../utils/generateElements';
 
 const Constructor = () => {
   const [form, setForm] = useState([]);
@@ -26,15 +25,8 @@ const Constructor = () => {
   };
 
   const addItem = () => {
-    const countArray = form.map((el) => el.countOfElement);
-    const maxCount = countArray.length === 0 ? 1 : Math.max.apply(null, countArray);
-
-    setForm(form.concat({
-      ...constructorFormElement,
-      name: `newField${maxCount}`,
-      count: maxCount + 1,
-      id: uuid(),
-    }));
+    const newElement = generateNewElement();
+    setForm(form.concat(newElement));
   };
 
   const setFormElementToUpdate = (id) => setFormElement(form.find((el) => el.id === id));
@@ -47,7 +39,7 @@ const Constructor = () => {
   };
 
   const saveElement = (element) => {
-    setForm((ps) => ps.map((el) => (el.id === formElement.id ? element : el)));
+    setForm((ps) => ps.map((el) => (el.id === formElement.id ? generateOptions(element) : el)));
     setFormElement(null);
   };
 

@@ -24,7 +24,7 @@ export default ({
     >
       {!options || options.length === 0 ? (
         <option>{placeholder}&nbsp;</option>
-      ) : options.map((el) => <option key={el.value} value={el.value}>{el.text}</option>)}
+      ) : options.map((el) => <option key={el.value} value={el.value}>{el.title}</option>)}
     </select>
     <div className="invalid-feedback">{error}</div>
   </div>

@@ -3,8 +3,25 @@ import { useEffect, useState } from 'react';
 import { OverflowBox } from '../overflow-box';
 import { CustomInput, CustomSelectV2, CustomCheckbox } from '../../form-elements';
 import {
-  constructorElementsOptions, INPUT, RADIO, SELECT, CHECKBOX,
+  constructorElementsOptions, INPUT, RADIO, SELECT, CHECKBOX, constructorFormElement,
 } from '../../../constants';
+
+const leadToTheNumber = (v) => (!v ? 0 : parseInt(v, 10));
+
+const validationFunctions = {
+  pattern: (str) => (v) => (new RegExp(str).test(v) ? '' : 'Invalid Pattern'),
+  maxLength: (length) => (v) => (parseInt(v, 10) > length ? 'Invalid' : ''),
+  required: () => (v) => (v.trim() === '' ? 'Required' : ''),
+};
+
+const checkValidations = (obj, n, v) => {
+  if (v) return obj;
+  if (!obj[n]) return obj;
+
+  const clone = { ...obj };
+  delete clone[n];
+  return clone;
+};
 
 export const Element = ({
   element,
@@ -66,7 +83,12 @@ export const Element = ({
   const toggleElementValidation = (e) => {
     const { checked } = e.target;
 
-    setCurrentElement((prevState) => ({ ...prevState, includeValidate: checked }));
+    setCurrentElement((prevState) => ({
+      ...prevState,
+      includeValidate: checked,
+      validate: checked ? prevState.validate : {},
+      defaultUserValidate: checked ? prevState.defaultUserValidate : constructorFormElement.defaultUserValidate,
+    }));
   };
 
   const changeElementValidation = (e) => {
@@ -74,18 +96,22 @@ export const Element = ({
       name, checked, value, type,
     } = e.target;
 
+    const elementValue = type === CHECKBOX ? checked : value;
+
+    const v = !elementValue ? {} : { [name]: validationFunctions[name](elementValue) };
     setCurrentElement((prevState) => ({
       ...prevState,
       defaultUserValidate: {
         ...prevState.defaultUserValidate,
-        [name]: type === CHECKBOX ? checked : value,
+        [name]: elementValue,
       },
+      validate: { ...checkValidations(prevState.validate, name, elementValue), ...v },
     }));
   };
 
   const onChangeOptionsCountEvent = (e) => {
     const { value } = e.target;
-    setCurrentElement((ps) => ({ ...ps, options: { ...ps.options, countOfOptions: value } }));
+    setCurrentElement((ps) => ({ ...ps, options: { ...ps.options, countOfOptions: leadToTheNumber(value) } }));
   };
 
   const saveElementEvent = () => saveElement(currentElement);

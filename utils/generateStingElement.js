@@ -26,12 +26,12 @@ const getValidate = (o) => {
   let string = '';
   if (o.required) string = "required: (v) => (v.trim() === '' ? 'Required' : ''),";
   if (o.maxLength) {
-    string = string.length === 0 ? `maxLength: (v) => (parseInt(v) !== ${o.maxLength} ? 'Invalid' : ''),` : `${string}
-      maxLength: (v) => (parseInt(v) !== ${o.maxLength} ? 'Invalid' : ''),`;
+    string = string.length === 0 ? `maxLength: (v) => (parseInt(v) > ${o.maxLength} ? 'Invalid' : ''),` : `${string}
+      maxLength: (v) => (parseInt(v) > ${o.maxLength} ? 'Invalid' : ''),`;
   }
   if (o.pattern) {
-    string = string.length === 0 ? `pattern: (v) => (${new RegExp(o.pattern)}.test(v) ? 'Invalid' : ''),` : `${string}
-      pattern: (v) => (${new RegExp(o.pattern)}.test(v) ? 'Invalid' : ''),`;
+    string = string.length === 0 ? `pattern: (v) => (${new RegExp(o.pattern)}.test(v) ? '' : 'Invalid'),` : `${string}
+      pattern: (v) => (${new RegExp(o.pattern)}.test(v) ? '' : 'Invalid'),`;
   }
 
   return string ? `validate: {

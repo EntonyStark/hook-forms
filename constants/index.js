@@ -52,19 +52,18 @@ export const constructorFormElement = {
   id: '0',
   name: '',
   value: '',
-  options: { type: INPUT, label: 'Default Label', countOfOptions: 0 },
+  options: { type: INPUT, label: 'Default Label', countOfOptions: 5 },
   validate: {},
   defaultUserValidate: { required: false, maxLength: '', pattern: '' },
   includeValidate: false,
-  countOfElement: 1,
 };
 
 export const constructorElementsOptions = [
-  { value: INPUT, text: 'Input' },
-  { value: RADIO, text: 'Radio' },
-  { value: SELECT, text: 'Select' },
-  { value: CHECKBOX, text: 'Checkbox' },
-  { value: TEXTAREA, text: 'Textarea' },
+  { value: INPUT, title: 'Input' },
+  { value: RADIO, title: 'Radio' },
+  { value: SELECT, title: 'Select' },
+  { value: CHECKBOX, title: 'Checkbox' },
+  { value: TEXTAREA, title: 'Textarea' },
 ];
 
 export const constructorBlockHeight = 550;
