@@ -1,0 +1,26 @@
+.lines {
+  overflow: hidden;
+
+  &::after {
+    background-color: var(--light-grey);
+    content: "";
+    display: inline-block;
+    height: 1px;
+    position: relative;
+    vertical-align: middle;
+    width: 50%;
+    left: 5px;
+    margin-right: -50%;
+  }
+  &::before {
+    background-color: var(--light-grey);
+    content: "";
+    display: inline-block;
+    height: 1px;
+    position: relative;
+    vertical-align: middle;
+    width: 50%;
+    right: 5px;
+    margin-left: -50%;
+  }
+}

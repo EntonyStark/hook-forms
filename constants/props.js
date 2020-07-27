@@ -2,7 +2,7 @@ export const propsProperty = [
   {
     id: '0',
     title: 'initialForm',
-    desc: 'That is array of objects, which contain all properties for form setup (required)',
+    desc: 'That is array of objects, which contain all properties for form setup',
     code: `const sayHelloForm = [
       {
         name: 'name',
@@ -12,8 +12,7 @@ export const propsProperty = [
       },
     ];
     
-    const {} = easyHook({ initialForm: sayHelloForm });
-    `,
+const {} = easyHook({ initialForm: sayHelloForm });`,
     table: [
       {
         key: 'name',

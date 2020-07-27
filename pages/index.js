@@ -43,7 +43,7 @@ const Home = ({ repoInfo }) => (
     </div>
     <div className="row justify-content-center my-5">
       <div className="col-sm-4">
-        <div className="card mb-4">
+        <div className="card mb-4 shadow-sm">
           <div className="card-body">
             <p className="card-text">Start learning new things here</p>
             <Link href={URLS.getStarted}>
@@ -51,7 +51,7 @@ const Home = ({ repoInfo }) => (
             </Link>
           </div>
         </div>
-        <div className="card">
+        <div className="card shadow-sm">
           <div className="card-body">
             <p className="card-text">See how you can use it</p>
             <Link href={URLS.examples.simple}>
@@ -61,7 +61,7 @@ const Home = ({ repoInfo }) => (
         </div>
       </div>
       <div className="col-sm-4">
-        <div className="card mb-4">
+        <div className="card mb-4 shadow-sm">
           <div className="card-body">
             <p className="card-text">Description for API</p>
             <Link href={URLS.doc.api}>
@@ -69,7 +69,7 @@ const Home = ({ repoInfo }) => (
             </Link>
           </div>
         </div>
-        <div className="card">
+        <div className="card shadow-sm">
           <div className="card-body">
             <p className="card-text">Create your form array with us</p>
             <Link href={URLS.doc.api}>

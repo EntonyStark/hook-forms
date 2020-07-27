@@ -9,7 +9,7 @@ const navItems = [
     id: 'get-started', title: 'Getting started', link: URLS.getStarted,
   },
   {
-    id: 'doc', title: 'Documentation', link: URLS.doc.props,
+    id: 'doc', title: 'API', link: URLS.doc.props,
   },
 
   {
@@ -28,7 +28,7 @@ export const Header = ({ repoInfo }) => {
       <nav className="navbar navbar-expand-lg navbar-light bg-light">
         <div className="container">
           <Link href={URLS.home}>
-            <a className="navbar-brand">{`${packageTitle}, v${getPackageVersion()}`}</a>
+            <a className="navbar-brand text-truncate">{`${packageTitle}, v${getPackageVersion()}`}</a>
           </Link>
           <button
             className="navbar-toggler"

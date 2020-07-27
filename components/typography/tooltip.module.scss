@@ -1,0 +1,45 @@
+.tooltip-toggle {
+  cursor: pointer;
+  position: relative;
+  font-family: inherit;
+
+  svg {
+    height: 14px;
+    width: 14px;
+  }
+  
+  //Tooltip text container
+  &::before {
+    position: absolute;
+    transform: translate(0, -50%);
+    top: 50%;
+    left: 20px;
+    background-color: #2B222A;
+    border-radius: 5px;
+    color: #fff;
+    content: attr(aria-label); //This pulls in the text from the element with the tooltip
+    padding: 5px 10px;
+    text-transform: none;
+    transition: all 0.5s ease;
+    max-width: 160px;
+    width: auto;
+  }
+
+  //Setting up the transition
+  &::before {
+    color: #efefef;
+    font-family: inherit;
+    font-size: 11px;
+    opacity: 0;
+    pointer-events: none;
+    text-align: center;
+  }
+  
+  //Triggering the transition
+  &:focus::before,
+  &:hover::before,
+  &:hover::after {
+    opacity: 1;
+    transition: all 0.75s ease;
+  }
+}
