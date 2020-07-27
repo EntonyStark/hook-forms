@@ -3,25 +3,35 @@ import { TextWithLines } from '../typography/text-with-lines';
 import { classNames } from '../../utils/classNames';
 import styles from './navigation.module.scss';
 
-export const Navigation = () => {
-  console.log('s', styles);
+export const Navigation = ({ navigation }) => {
+  const scrollTo = (id) => {
+    const yourElement = document.getElementById(id);
+    const additionalHeight = 56 + 5; // 56 = header, 5 margin
+    const y = yourElement.getBoundingClientRect().top + window.pageYOffset - additionalHeight;
+
+    window.scrollTo({ top: y, behavior: 'smooth' });
+  };
+
   return (
     <div className="col-lg-3 d-none d-lg-block">
       <div className={styles.navigation}>
         <TextWithLines text="Menu" tag="p" />
 
         <ul className={styles.navigation__list}>
-          <li className={styles.navigation__item}><code>&lt;/&gt;</code> <span>TEST sfasdfa</span></li>
-          <li className={classNames(styles.navigation__item, styles['navigation__item--nested'])}>
-            <code>&lt;/&gt;</code><span>Nested</span>
-          </li>
-          <li className={classNames(styles.navigation__item, styles['navigation__item--nested'])}>
-            <code>&lt;/&gt;</code><span>Nested</span>
-          </li>
-          <li className={classNames(styles.navigation__item, styles['navigation__item--last'])}>
-            <code>&lt;/&gt;</code><span>Nested last</span>
-          </li>
-          <li className={styles.navigation__item}><code>&lt;/&gt;</code> <span>Dapibus ac facilisis in</span></li>
+          {navigation.map((el) => (
+            <li
+              key={el.id || el.anchor}
+              className={classNames({
+                [styles.navigation__item]: true,
+                [styles['navigation__item--nested']]: el.nested,
+                [styles['navigation__item--last']]: el.last,
+              })}
+              onClick={scrollTo.bind(null, el.anchor)}
+              role="link"
+            >
+              <code>&lt;/&gt;</code> <span>{el.text}</span>
+            </li>
+          ))}
         </ul>
       </div>
     </div>

@@ -9,7 +9,7 @@ const navItems = [
     id: 'get-started', title: 'Getting started', link: URLS.getStarted,
   },
   {
-    id: 'doc', title: 'API', link: URLS.doc.props,
+    id: 'doc', title: 'API', link: URLS.api,
   },
 
   {
