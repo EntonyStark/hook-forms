@@ -64,7 +64,7 @@ const Home = ({ repoInfo }) => (
         <div className="card mb-4 shadow-sm">
           <div className="card-body">
             <p className="card-text">Description for API</p>
-            <Link href={URLS.doc.api}>
+            <Link href={URLS.api}>
               <a className="btn btn-primary">Documentation &rarr;</a>
             </Link>
           </div>
@@ -72,7 +72,7 @@ const Home = ({ repoInfo }) => (
         <div className="card shadow-sm">
           <div className="card-body">
             <p className="card-text">Create your form array with us</p>
-            <Link href={URLS.doc.api}>
+            <Link href={URLS.constructor}>
               <a className="btn btn-primary">Form constructor &rarr;</a>
             </Link>
           </div>
