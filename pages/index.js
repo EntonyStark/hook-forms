@@ -46,7 +46,7 @@ const Home = ({ repoInfo }) => (
         <div className="card mb-4 shadow-sm">
           <div className="card-body">
             <p className="card-text">Start learning new things here</p>
-            <Link href={URLS.getStarted}>
+            <Link href="#">
               <a className="btn btn-primary">Getting started &rarr;</a>
             </Link>
           </div>
