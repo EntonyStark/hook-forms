@@ -5,9 +5,9 @@ import { getPackageVersion } from '../../utils/getPackageVersion';
 import { URLS, packageTitle } from '../../constants';
 
 const navItems = [
-  // {
-  //   id: 'get-started', title: 'Getting started', link: URLS.getStarted,
-  // },
+  {
+    id: 'get-started', title: 'Getting started', link: URLS.getStarted,
+  },
   {
     id: 'doc', title: 'API', link: URLS.api,
   },
