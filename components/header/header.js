@@ -5,16 +5,15 @@ import { getPackageVersion } from '../../utils/getPackageVersion';
 import { URLS, packageTitle } from '../../constants';
 
 const navItems = [
-  {
-    id: 'get-started', title: 'Getting started', link: URLS.getStarted,
-  },
+  // {
+  //   id: 'get-started', title: 'Getting started', link: URLS.getStarted,
+  // },
   {
     id: 'doc', title: 'API', link: URLS.api,
   },
-
-  {
-    id: 'examples', title: 'Examples', link: URLS.examples.simple,
-  },
+  // {
+  //   id: 'examples', title: 'Examples', link: URLS.examples.simple,
+  // },
   {
     id: 'constructor', title: 'Form constructor', link: URLS.constructor,
   },

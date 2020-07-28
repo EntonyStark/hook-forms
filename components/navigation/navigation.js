@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 import { TextWithLines } from '../typography/text-with-lines';
 
 import { classNames } from '../../utils/classNames';
@@ -27,7 +28,6 @@ export const Navigation = ({ navigation }) => {
                 [styles['navigation__item--last']]: el.last,
               })}
               onClick={scrollTo.bind(null, el.anchor)}
-              role="link"
             >
               <code>&lt;/&gt;</code> <span>{el.text}</span>
             </li>
