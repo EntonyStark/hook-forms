@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
-import styles from './values.module.scss';
+
+import { CodeBlockV2 } from '../code/codeV2';
 
 export const Values = ({ array }) => {
   const [values, setValues] = useState([]);
@@ -8,9 +9,5 @@ export const Values = ({ array }) => {
     setValues(array.reduce((a, el) => ({ ...a, [el.name]: el.value }), {}));
   }, [array]);
 
-  return (
-    <div className={styles.values}>
-      <pre>{JSON.stringify(values, null, 2)}</pre>
-    </div>
-  );
+  return <CodeBlockV2 codeString={JSON.stringify(values, null, 2)} copyBtn={false} />;
 };

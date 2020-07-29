@@ -11,9 +11,9 @@ const navItems = [
   {
     id: 'doc', title: 'API', link: URLS.api,
   },
-  // {
-  //   id: 'examples', title: 'Examples', link: URLS.examples.simple,
-  // },
+  {
+    id: 'examples', title: 'Examples', link: URLS.examples.simple,
+  },
   {
     id: 'constructor', title: 'Form constructor', link: URLS.constructor,
   },
