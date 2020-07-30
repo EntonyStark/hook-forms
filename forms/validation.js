@@ -1,7 +1,4 @@
-const required = (v) => (v.trim() === '' ? 'Required' : '');
-const checkEmail = (v) => (/^([a-zA-Z0-9_.-])+@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/.test(v) ? '' : 'Not valid email');
-
-export const form = [
+export const formArray = [
   {
     name: 'firstName',
     value: '',
@@ -9,7 +6,7 @@ export const form = [
       label: 'First Name',
     },
     validate: {
-      required,
+      required: (v) => (v.trim() === '' ? 'Required' : ''),
     },
   },
   {
@@ -19,7 +16,7 @@ export const form = [
       label: 'Last Name',
     },
     validate: {
-      required,
+      required: (v) => (v.trim() === '' ? 'Required' : ''),
     },
   },
   {
@@ -29,8 +26,8 @@ export const form = [
       label: 'Email',
     },
     validate: {
-      required,
-      checkEmail,
+      required: (v) => (v.trim() === '' ? 'Required' : ''),
+      checkEmail: (v) => (/^([a-zA-Z0-9_.-])+@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/.test(v) ? '' : 'Not valid email'),
     },
   },
   {
@@ -45,7 +42,7 @@ export const form = [
       ],
     },
     validate: {
-      required,
+      required: (v) => (v.trim() === '' ? 'Required' : ''),
     },
   },
   {
@@ -55,13 +52,14 @@ export const form = [
       label: 'Role',
       type: 'select',
       options: [
+        { title: '', value: '' },
         { title: 'User', value: 'user' },
         { title: 'Administrator', value: 'admin' },
         { title: 'Moderator', value: 'moderator' },
       ],
     },
     validate: {
-      required,
+      required: (v) => (v.trim() === '' ? 'Required' : ''),
     },
   },
   {
@@ -80,7 +78,7 @@ export const form = [
       type: 'textarea',
     },
     validate: {
-      required,
+      required: (v) => (v.trim() === '' ? 'Required' : ''),
     },
   },
 ];

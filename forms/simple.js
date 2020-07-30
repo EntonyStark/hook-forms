@@ -1,4 +1,4 @@
-export const form = [
+export const formArray = [
   {
     name: 'firstName',
     value: '',
@@ -39,6 +39,7 @@ export const form = [
       label: 'Role',
       type: 'select',
       options: [
+        { title: '', value: '' },
         { title: 'User', value: 'user' },
         { title: 'Administrator', value: 'admin' },
         { title: 'Moderator', value: 'moderator' },

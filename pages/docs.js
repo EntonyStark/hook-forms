@@ -1,6 +1,6 @@
 import { BaseLayout } from '../layouts/base-layout';
 import { Navigation } from '../components/navigation/navigation';
-import { CodeBlock } from '../components/code/code';
+import { CodeBlockV2 } from '../components/code/codeV2';
 import { PropsTable } from '../components/table/table';
 import { WithTooltip } from '../components/typography/tooltip';
 import { APIProperty } from '../constants/api-doc';
@@ -55,8 +55,7 @@ const APIComponent = ({ navigation }) => (
           <section key={el.id} className="mb-5">
             <TitleComponent text={el.title} type={el.type} id={el.title} />
             <p className="lead">{el.desc} {el.required && <WithTooltip text="Required" />}</p>
-            {/* <CodeBlock title={false} value={el.code} /> */}
-            {el.code && <CodeBlock title={false} value={el.code} language={el.codeLanguage} />}
+            {el.code && <CodeBlockV2 codeString={el.code} copyBtn={false} />}
 
             {el.table && <PropsTable table={el.table} />}
           </section>

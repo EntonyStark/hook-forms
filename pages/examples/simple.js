@@ -5,18 +5,18 @@ import { examples } from '../../constants';
 import { FormFactoryV2 } from '../../components/form-elements/factory/factoryV2';
 
 import { CodeBlockV2 } from '../../components/code/codeV2';
+import { formArray } from '../../forms/simple';
 
 export const getStaticProps = async () => {
-  const { fileContents, form } = await getMdData(examples.simple);
+  const { fileContents } = await getMdData(examples.simple);
   return {
     props: {
       fileContents,
-      form,
     },
   };
 };
 
-const Component = ({ fileContents, form }) => (
+const Component = ({ fileContents }) => (
   <>
     <div className="d-flex flex-column mt-5">
       <h3 className="display-4">Simple Form Example</h3>
@@ -26,10 +26,10 @@ const Component = ({ fileContents, form }) => (
       </p>
 
     </div>
-    <div className="row mt-5">
+    <div className="row my-5">
       <div className="col-md-12 col-lg-6">
         <h4 className="mb-3">Form</h4>
-        <FormFactoryV2 form={form} valuesBlock />
+        <FormFactoryV2 form={formArray} valuesBlock />
       </div>
       <div className="col-md-12 col-lg-6">
         <h4 className="mb-3">Code</h4>
@@ -39,8 +39,8 @@ const Component = ({ fileContents, form }) => (
   </>
 );
 
-export default ({ fileContents, form }) => (
+export default ({ fileContents }) => (
   <BaseLayout>
-    <Component fileContents={fileContents} form={form} />
+    <Component fileContents={fileContents} />
   </BaseLayout>
 );

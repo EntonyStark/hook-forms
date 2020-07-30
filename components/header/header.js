@@ -4,23 +4,72 @@ import { useRouter } from 'next/router';
 import { getPackageVersion } from '../../utils/getPackageVersion';
 import { URLS, packageTitle } from '../../constants';
 
+const LINK_TYPE = 'link';
+const DROPDOWN_TYPE = 'dropdown';
+
 const navItems = [
   {
-    id: 'get-started', title: 'Getting started', link: URLS.getStarted,
+    id: 'get-started', title: 'Getting started', type: LINK_TYPE, url: URLS.getStarted,
   },
   {
-    id: 'doc', title: 'API', link: URLS.api,
+    id: 'doc', title: 'API', type: LINK_TYPE, url: URLS.api,
   },
   {
-    id: 'examples', title: 'Examples', link: URLS.examples.simple,
+    id: 'examples',
+    title: 'Examples',
+    type: DROPDOWN_TYPE,
+    urls: [
+      { id: '0', link: URLS.examples.simple, title: 'Simple' },
+      { id: '0', link: URLS.examples.validation, title: 'Validation' },
+    ],
   },
   {
-    id: 'constructor', title: 'Form constructor', link: URLS.constructor,
+    id: 'constructor', title: 'Form constructor', type: LINK_TYPE, url: URLS.constructor,
   },
 ];
 
 export const Header = ({ repoInfo }) => {
   const router = useRouter();
+
+  const getItems = (item) => {
+    switch (item.type) {
+      case LINK_TYPE: {
+        return (
+          <li key={item.id} className={item.link === router.pathname ? 'nav-item active' : 'nav-item'}>
+            <Link href={item.url}>
+              <a className="nav-link">{item.title}</a>
+            </Link>
+          </li>
+        );
+      }
+      case DROPDOWN_TYPE: {
+        return (
+          <li key={item.id} className="nav-item dropdown">
+            <span
+              className="nav-link dropdown-toggle"
+              id="navbarDropdown"
+              role="button"
+              data-toggle="dropdown"
+              aria-haspopup="true"
+              aria-expanded="false"
+            >
+              {item.title}
+            </span>
+            <div className="dropdown-menu" aria-labelledby="navbarDropdown">
+              {item.urls.map((el) => (
+                <Link key={el.id} href={el.link}>
+                  <a className="dropdown-item">{el.title}</a>
+                </Link>
+              ))}
+            </div>
+          </li>
+        );
+      }
+      default: {
+        return <></>;
+      }
+    }
+  };
 
   return (
     <header className="sticky-top">
@@ -43,13 +92,7 @@ export const Header = ({ repoInfo }) => {
 
           <div className="collapse navbar-collapse" id="navbarContent">
             <ul className="navbar-nav ml-auto mr-2">
-              {navItems.map((el) => (
-                <li key={el.id} className={el.link === router.pathname ? 'nav-item active' : 'nav-item'}>
-                  <Link href={el.link}>
-                    <a className="nav-link">{el.title}</a>
-                  </Link>
-                </li>
-              ))}
+              {navItems.map(getItems)}
             </ul>
             <form className="form-inline" style={{ width: '10%' }}>
               <div className="input-group input-group-sm">
