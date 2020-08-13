@@ -6,6 +6,7 @@ import { WrapperDND } from '../components/constructor/dnd-block/container';
 import { Element } from '../components/constructor/element-block/element';
 import { CodeBox } from '../components/constructor/code-block/code';
 import { ExampleBox } from '../components/constructor/example-block/example';
+import { CustomModal } from '../components/modal/modal';
 
 import { generateForm } from '../utils/generateStingElement';
 import { generateNewElement, generateOptions } from '../utils/generateElements';
@@ -14,6 +15,7 @@ const Constructor = () => {
   const [form, setForm] = useState([]);
   const [formElement, setFormElement] = useState(null);
   const [stringCode, setStringCode] = useState('');
+  const [showModal, setShowModal] = useState(false);
 
   useEffect(() => {
     setStringCode(generateForm(form));
@@ -80,10 +82,23 @@ const Constructor = () => {
           saveElement={saveElement}
         />
       </div>
-      <div className="row my-5">
-        <CodeBox string={stringCode} />
-        <ExampleBox form={form} />
-      </div>
+      {form.length !== 0 && (
+      <button
+        className="btn btn-outline-primary btn-sm btn-block mb-5"
+        onClick={() => setShowModal(true)}
+      >
+        3. Generate your form
+      </button>
+      )}
+
+      {showModal && (
+      <CustomModal closeEvent={() => setShowModal(false)}>
+        <div className="row">
+          <CodeBox string={stringCode} />
+          <ExampleBox form={form} />
+        </div>
+      </CustomModal>
+      )}
     </>
   );
 };

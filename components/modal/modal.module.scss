@@ -1,0 +1,41 @@
+.modal {
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	z-index: 10;
+
+	overflow: hidden;
+	background-color: var(--base-white);
+	border-radius: 3px;
+
+	&__headerBox {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+
+		border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+		padding: 15px;
+
+		i {
+			cursor: pointer;
+		}
+	}
+
+	&__bodyBox {
+		padding: 15px;
+
+		max-height: calc(100vh - 130px);
+    overflow-y: auto;
+	}
+}
+
+.wrapper {
+	width: 100vw;
+	height: 100vh;
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: 99999;
+	background-color: rgba(0, 0, 0, 0.3);
+}

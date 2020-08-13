@@ -1,6 +1,5 @@
 import Link from 'next/link';
 
-import { BaseLayout } from '../layouts/base-layout';
 import { CodeBlockV2 } from '../components/code/codeV2';
 
 import { packageTitle, URLS } from '../constants';
@@ -94,7 +93,5 @@ const Component = () => (
 );
 
 export default () => (
-  <BaseLayout>
-    <Component />
-  </BaseLayout>
+  <Component />
 );

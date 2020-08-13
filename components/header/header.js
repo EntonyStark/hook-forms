@@ -20,7 +20,7 @@ const navItems = [
     type: DROPDOWN_TYPE,
     urls: [
       { id: '0', link: URLS.examples.simple, title: 'Simple' },
-      { id: '0', link: URLS.examples.validation, title: 'Validation' },
+      { id: '1', link: URLS.examples.validation, title: 'Validation' },
     ],
   },
   {

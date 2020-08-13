@@ -1,4 +1,3 @@
-import { BaseLayout } from '../layouts/base-layout';
 import { Navigation } from '../components/navigation/navigation';
 import { CodeBlockV2 } from '../components/code/codeV2';
 import { PropsTable } from '../components/table/table';
@@ -66,7 +65,5 @@ const APIComponent = ({ navigation }) => (
 );
 
 export default ({ navigation }) => (
-  <BaseLayout>
-    <APIComponent navigation={navigation} />
-  </BaseLayout>
+  <APIComponent navigation={navigation} />
 );

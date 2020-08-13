@@ -1,4 +1,3 @@
-import { BaseLayout } from '../../layouts/base-layout';
 import { getMdData } from '../../utils/getMdFiles';
 import { examples } from '../../constants';
 
@@ -40,7 +39,5 @@ const Component = ({ fileContents }) => (
 );
 
 export default ({ fileContents }) => (
-  <BaseLayout>
-    <Component fileContents={fileContents} />
-  </BaseLayout>
+  <Component fileContents={fileContents} />
 );

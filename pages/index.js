@@ -1,6 +1,5 @@
 import Link from 'next/link';
 
-import { BaseLayout } from '../layouts/base-layout';
 import { packageTitle, URLS } from '../constants';
 
 export const getStaticProps = async () => ({
@@ -82,8 +81,6 @@ const Home = ({ repoInfo }) => (
   </>
 );
 
-export default () => (
-  <BaseLayout>
-    <Home />
-  </BaseLayout>
+export default (props) => (
+  <Home {...props} />
 );
