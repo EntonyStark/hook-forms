@@ -1,7 +1,6 @@
 import { useState, useEffect, useCallback } from 'react';
 import update from 'immutability-helper';
 
-import { BaseLayout } from '../layouts/base-layout';
 import { WrapperDND } from '../components/constructor/dnd-block/container';
 import { Element } from '../components/constructor/element-block/element';
 import { CodeBox } from '../components/constructor/code-block/code';
@@ -104,7 +103,5 @@ const Constructor = () => {
 };
 
 export default () => (
-  <BaseLayout>
-    <Constructor />
-  </BaseLayout>
+  <Constructor />
 );
