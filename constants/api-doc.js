@@ -198,7 +198,7 @@ const changeDefaultValues = () => updateDefaultValues({ firstName: 'John' }) // 
       text: 'updateFormArray',
       anchor: 'updateFormArray',
     },
-    desc: 'For dynamically setting form array, also you can set default values',
+    desc: 'For dynamically setting form array',
     code: `const sayHelloForm = [
   {
     name: 'firstName',
@@ -218,7 +218,7 @@ const changeDefaultValues = () => updateDefaultValues({ firstName: 'John' }) // 
   },
 ];
 
-const changeDefaultValues = () => updateDefaultValues(sayHelloForm, { firstName: 'John' })`,
+const changeDefaultValues = () => updateDefaultValues(sayHelloForm)`,
   },
   {
     id: '16',
