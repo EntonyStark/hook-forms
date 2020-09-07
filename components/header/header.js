@@ -1,7 +1,8 @@
+import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 
-import { getPackageVersion } from '../../utils/getPackageVersion';
+import { getPackageVersionFromNpm, getPackageVersionFromLocal } from '../../utils/getPackageVersion';
 import { URLS, packageTitle } from '../../constants';
 
 const LINK_TYPE = 'link';
@@ -30,7 +31,11 @@ const navItems = [
 
 export const Header = ({ repoInfo }) => {
   const router = useRouter();
+  const [packageV, setPackageV] = useState(getPackageVersionFromLocal());
 
+  useEffect(() => {
+    getPackageVersionFromNpm().then((res) => setPackageV(res));
+  }, []);
   const getItems = (item) => {
     switch (item.type) {
       case LINK_TYPE: {
@@ -76,7 +81,7 @@ export const Header = ({ repoInfo }) => {
       <nav className="navbar navbar-expand-lg navbar-light bg-light">
         <div className="container">
           <Link href={URLS.home}>
-            <a className="navbar-brand text-truncate">{`${packageTitle}, v${getPackageVersion()}`}</a>
+            <a className="navbar-brand text-truncate">{`${packageTitle}, v${packageV}`}</a>
           </Link>
           <button
             className="navbar-toggler"
