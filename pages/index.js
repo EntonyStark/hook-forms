@@ -30,7 +30,7 @@ const Home = ({ repoInfo }) => (
       <div className="col-sm-12 col-md-4">
         <article className="text-center">
           <h3>Super Light</h3>
-          <p>Package size matters. React Hook Form is a tiny library without any dependencies.</p>
+          <p>Package size matters. Hook Easy Form is a tiny library without any dependencies.</p>
         </article>
       </div>
       <div className="col-sm-12 col-md-4">

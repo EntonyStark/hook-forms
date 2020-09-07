@@ -91,7 +91,7 @@ const Constructor = () => {
       )}
 
       {showModal && (
-      <CustomModal closeEvent={() => setShowModal(false)}>
+      <CustomModal closeEvent={() => setShowModal(false)} title="Your form">
         <div className="row">
           <CodeBox string={stringCode} />
           <ExampleBox form={form} />
