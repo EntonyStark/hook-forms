@@ -64,6 +64,13 @@ const {} = easyHook({ initialForm: sayHelloForm });`,
         required: 'false',
         description: 'Object for rest user properties, it can be - type, placeholder, label, some options etc',
       },
+      {
+        key: 'asyncValidation (beta)',
+        type: 'function',
+        default: 'undefined',
+        required: 'false',
+        description: 'Function fired each time when triggered updateEvent, receive value, and other values, should return string for error',
+      },
     ],
   },
   {
