@@ -14,6 +14,7 @@ const singleExampleFormString = `export const form = [
   {
     name: "name",
     value: '',
+    required: true,
     options: {
       type: "text"
     },
@@ -22,14 +23,16 @@ const singleExampleFormString = `export const form = [
   {
     name: "email",
     value: '',
+    required: true,
     options: {
-      type: "text"
+      type: "email"
     },
     validate: {}
   },
   {
     name: "age",
     value: '',
+    required: true,
     options: {
       type: "number"
     },
@@ -43,20 +46,26 @@ import { form } from './form';
 
 const Component = () => {
   const {
-    formArray, updateEvent, resetEvent, pristine, submitEvent,
+    formArray, updateEvent, resetEvent, disabled, valid, runValidate, submitEvent,
   } = easyHook({ initialForm: form });
 
-  const submit = (v) => console.log(v);
+  const onSubmit = submitEvent((v) => console.log(v));
 
   return (
-    <form onSubmit={submitEvent(submit)}>
+    <form onSubmit={onSubmit}>
       {formArray.map((el) => (
         <div key={el.name}>
-          <input name={el.name} type={el.options.type} value={el.value} onChange={updateEvent} />
+          <input
+            name={el.name}
+            type={el.options.type}
+            value={el.value}
+            onChange={updateEvent}
+            onBlur={runValidate}
+          />
         </div>
       ))}
-      <button type="submit" disabled={pristine}>Submit</button>
-      <button type="button" onClick={resetEvent} disabled={pristine}>Submit</button>
+      <button type="submit" disabled={disabled || !valid}>Submit</button>
+      <button type="button" onClick={resetEvent} disabled={disabled || !valid}>Reset</button>
     </form>
   );
 };`;

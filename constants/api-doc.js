@@ -15,6 +15,8 @@ export const APIProperty = [
       {
         name: 'name',
         value: '',
+        onChangeValidate: false, 
+        required: false,
         validate: {},
         options: {},
       },
@@ -65,11 +67,18 @@ const {} = easyHook({ initialForm: sayHelloForm });`,
         description: 'Object for rest user properties, it can be - type, placeholder, label, some options etc',
       },
       {
-        key: 'asyncValidation (beta)',
-        type: 'function',
-        default: 'undefined',
+        key: 'required',
+        type: 'boolean',
+        default: 'false',
         required: 'false',
-        description: 'Function fired each time when triggered updateEvent, receive value, and other values, should return string for error',
+        description: 'This field will be track inside `disabled` property',
+      },
+      {
+        key: 'onChangeValidate',
+        type: 'boolean',
+        default: 'false',
+        required: 'false',
+        description: 'Should validate this field each time when it change?',
       },
     ],
   },
@@ -121,9 +130,10 @@ const {} = easyHook({ initialForm: sayHelloForm });`,
       and all properties which you pass to the option object.`,
     code: `[
     {
-      name: "firstName"
-      options: {label: "First Name"}
-      value: ""
+      name: "firstName",
+      options: {label: "First Name"},
+      value: "",
+      ...
     },
     ...
 ]`,
@@ -142,9 +152,10 @@ const {} = easyHook({ initialForm: sayHelloForm });`,
       contain all property, can be useful for non iterable cases`,
     code: `{
     firstName: {
-      name: "firstName"
-      options: {label: "First Name"}
-      value: ""
+      name: "firstName",
+      options: {label: "First Name"},
+      value: "",
+      ...
     },
     ...
 }`,
@@ -277,6 +288,21 @@ const setValue = () => setValueManually('lastName', 'Anthony')
   },
   {
     id: '19',
+    title: 'runValidate',
+    type: 'Function',
+    link: {
+      ref: 'api',
+      nested: true,
+      text: 'runValidate',
+      anchor: 'runValidate',
+    },
+    desc: 'Event for immediately runs all validations functions which belong to some field, can be useful for `onBlur` event.',
+    code: `
+const validate = () => runValidate('firstName')
+   `,
+  },
+  {
+    id: '20',
     title: 'pristine',
     type: 'Boolean',
     link: {
@@ -289,17 +315,30 @@ const setValue = () => setValueManually('lastName', 'Anthony')
     code: null,
   },
   {
-    id: '20',
+    id: '21',
     title: 'valid',
+    type: 'Boolean',
+    link: {
+      ref: 'api',
+      nested: true,
+      text: 'valid',
+      anchor: 'valid',
+    },
+    desc: 'True when the form is valid (has no validation errors), false otherwise.',
+    code: null,
+  },
+  {
+    id: '22',
+    title: 'disabled',
     type: 'Boolean',
     link: {
       ref: 'api',
       nested: false,
       last: true,
-      text: 'valid',
-      anchor: 'valid',
+      text: 'disabled',
+      anchor: 'disabled',
     },
-    desc: 'True when the form is valid (has no validation errors), false otherwise.',
+    desc: 'Calculated from required properties, in all form items.',
     code: null,
   },
 ];
