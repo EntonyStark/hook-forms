@@ -39,6 +39,13 @@ const Home = ({ repoInfo }) => (
           <p>Since form state is inherently local, it can be easily adopted without other dependencies.</p>
         </article>
       </div>
+      <div className="col-sm-12 col-md-4" /> { /* empty box */}
+      <div className="col-sm-12 col-md-4">
+        <article className="text-center">
+          <h3>Typescript support</h3>
+          <p>Full typescript support, you can found all types for form.</p>
+        </article>
+      </div>
     </div>
     <div className="row justify-content-center my-5">
       <div className="col-sm-4">
