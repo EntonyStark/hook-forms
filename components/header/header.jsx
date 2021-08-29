@@ -3,9 +3,11 @@ import { useRouter } from 'next/router';
 
 import { getPackageVersionFromLocal } from '../../utils/getPackageVersion';
 import { URLS, packageTitle } from '../../constants';
+import { useWidth } from '../hooks/useWidth';
 
 const LINK_TYPE = 'link';
 const DROPDOWN_TYPE = 'dropdown';
+const BREAK_POINT = 767;
 
 const navItems = [
   {
@@ -30,6 +32,9 @@ const navItems = [
 
 export const Header = ({ repoInfo }) => {
   const router = useRouter();
+
+  const width = useWidth();
+
   const getItems = (item) => {
     switch (item.type) {
       case LINK_TYPE: {
@@ -93,8 +98,8 @@ export const Header = ({ repoInfo }) => {
             <ul className="navbar-nav ml-auto mr-2">
               {navItems.map(getItems)}
             </ul>
-            <form className="form-inline" style={{ width: '10%' }}>
-              <div className="input-group input-group-sm">
+            <form className="form-inline" style={{ width: width <= BREAK_POINT ? '15%' : '10%' }}>
+              <div className="input-group input-group-sm" style={{ flexWrap: 'nowrap' }}>
                 <div className="input-group-prepend">
                   <span className="input-group-text" id="basic-addon1"><i className="fab fa-github" /></span>
                 </div>

@@ -88,6 +88,6 @@ const Home = ({ repoInfo }) => (
   </>
 );
 
-export default (props) => (
-  <Home {...props} />
-);
+const RenderedComponent = (props) => <Home {...props} />;
+
+export default RenderedComponent;

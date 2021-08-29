@@ -101,6 +101,6 @@ const Component = () => (
   </>
 );
 
-export default () => (
-  <Component />
-);
+const RenderedComponent = () => <Component />;
+
+export default RenderedComponent;

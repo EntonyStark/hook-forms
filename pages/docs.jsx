@@ -64,6 +64,7 @@ const APIComponent = ({ navigation }) => (
   </>
 );
 
-export default ({ navigation }) => (
-  <APIComponent navigation={navigation} />
-);
+
+const RenderedComponent = ({ navigation }) => <APIComponent navigation={navigation} />;
+
+export default RenderedComponent;
