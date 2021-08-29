@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 
-const width = process.browser ? window.innerWidth : 0;
+const width = process.browser ? window.innerWidth : 10000;
 
 export const useWidth = () => {
   const [w, setW] = useState(width);

@@ -1,7 +1,10 @@
-
 import faker from 'faker';
 
-import { constructorFormElement, RADIO, SELECT } from '../constants';
+import {
+  constructorFormElement,
+  constructorElementsOptions,
+  RADIO, SELECT,
+} from '../constants';
 
 export const generateNewElement = () => ({
   ...constructorFormElement,
@@ -27,4 +30,50 @@ export const generateOptions = (elem) => {
   }
 
   return elem;
+};
+
+export const generateOptionsV2 = (elem) => {
+  const typesForWork = [RADIO, SELECT];
+  if (typesForWork.includes(elem.formItem.options.type) && elem.countOfOptions !== 0) {
+    const options = new Array(elem.countOfOptions)
+      .fill(null)
+      .map(() => {
+        const random = faker.random.word();
+        return { title: random, value: random.toLowerCase() };
+      });
+    return {
+      ...elem,
+      formItem: {
+        ...elem.formItem,
+        options: {
+          ...elem.formItem.options,
+          options,
+        },
+      },
+    };
+  }
+
+  return elem;
+};
+
+export const generateNewElementV2 = (value) => {
+  const i = constructorElementsOptions.find((e) => e.value === value);
+
+
+  const item = {
+    formItem: {
+      name: faker.name.title().replaceAll(' ', '_').toLowerCase(),
+      required: false,
+      onChangeValidate: false,
+      value: '',
+      options: { type: value, label: `${i.title} Default Label` },
+      validate: {},
+    },
+    id: faker.random.uuid(),
+    defaultUserValidate: { maxLength: '', pattern: '' },
+    includeValidate: false,
+    countOfOptions: 5,
+  };
+
+  return generateOptionsV2(item);
 };

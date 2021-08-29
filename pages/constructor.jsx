@@ -1,63 +1,44 @@
-import { useState, useEffect, useCallback } from 'react';
-import update from 'immutability-helper';
+import { useCallback, useState } from 'react';
 
-import { WrapperDND } from '../components/constructor/dnd-block/container';
-import { Element } from '../components/constructor/element-block/element';
+import { InputList } from '../components/constructor/input-list';
+import { ExistingInputTypesList } from '../components/constructor/existing-input-types-list';
+import { CustomizeItem } from '../components/constructor/customize-item';
+import { generateNewElementV2 } from '../utils/generateElements';
+import { generateFormV2 } from '../utils/generateStingElement';
+import { CustomModal } from '../components/modal/modal';
 import { CodeBox } from '../components/constructor/code-block/code';
 import { ExampleBox } from '../components/constructor/example-block/example';
-import { CustomModal } from '../components/modal/modal';
 
-import { generateForm } from '../utils/generateStingElement';
-import { generateNewElement, generateOptions } from '../utils/generateElements';
 
 const Constructor = () => {
-  const [form, setForm] = useState([]);
-  const [formElement, setFormElement] = useState(null);
+  const [list, setList] = useState([]);
+  const [itemForCustomize, setItemForCustomize] = useState(null);
   const [stringCode, setStringCode] = useState('');
-  const [showModal, setShowModal] = useState(false);
+  const [showCustomizeModal, setShowCustomizeModal] = useState(false);
+  const [totalFormModal, setTotalFormModal] = useState(false);
 
-  useEffect(() => {
-    setStringCode(generateForm(form));
-  }, [form]);
+  const addItem = (v) => setList((ps) => ps.concat(generateNewElementV2(v)));
 
-  const removeAll = () => {
-    setForm([]);
-    setFormElement(null);
-  };
+  const openCustomizeModal = useCallback((id) => {
+    setShowCustomizeModal(true);
+    const item = list.find((el) => el.id === id);
+    setItemForCustomize(item);
+  }, [list]);
 
-  const addItem = () => {
-    const newElement = generateNewElement();
-    setForm(form.concat(newElement));
-  };
+  const openTotalModal = useCallback(() => {
+    setTotalFormModal(true);
+    setStringCode(generateFormV2(list));
+  }, [list]);
 
-  const setFormElementToUpdate = (id) => setFormElement(form.find((el) => el.id === id));
+  const hideCustomizeModal = useCallback(() => {
+    setShowCustomizeModal(false);
+    setItemForCustomize(null);
+  }, []);
 
-  const removeElement = () => setFormElement(null);
-
-  const removeElementFromForm = (id) => {
-    setForm((prevState) => prevState.filter((el) => el.id !== id));
-    setFormElement(null);
-  };
-
-  const saveElement = (element) => {
-    setForm((ps) => ps.map((el) => (el.id === formElement.id ? generateOptions(element) : el)));
-    setFormElement(null);
-  };
-
-  const moveFormItem = useCallback(
-    (dragIndex, hoverIndex) => {
-      const dragCard = form[dragIndex];
-      setForm(
-        update(form, {
-          $splice: [
-            [dragIndex, 1],
-            [hoverIndex, 0, dragCard],
-          ],
-        }),
-      );
-    },
-    [form],
-  );
+  const applyUpdate = useCallback(() => {
+    setList((ps) => ps.map((el) => (el.id === itemForCustomize.id ? itemForCustomize : el)));
+    hideCustomizeModal();
+  }, [itemForCustomize]);
 
   return (
     <>
@@ -66,42 +47,40 @@ const Constructor = () => {
         <p className="lead text-center">Build your form with code and example.</p>
       </div>
       <div className="row my-5">
-        <WrapperDND
-          form={form}
-          removeAll={removeAll}
-          addItem={addItem}
-          moveFormItem={moveFormItem}
-          setFormElementToUpdate={setFormElementToUpdate}
-          removeElement={removeElementFromForm}
-        />
-
-        <Element
-          element={formElement}
-          removeElement={removeElement}
-          saveElement={saveElement}
-        />
+        <InputList list={list} openCustomizeModal={openCustomizeModal} />
+        <div className="col-md-2" />
+        <ExistingInputTypesList addItem={addItem} />
       </div>
-      {form.length !== 0 && (
+
+      {list.length !== 0 && (
       <button
         className="btn btn-outline-primary btn-sm btn-block mb-5"
-        onClick={() => setShowModal(true)}
+        onClick={openTotalModal}
       >
-        3. Generate your form
+        Step 3 - Generate your form
       </button>
       )}
 
-      {showModal && (
-      <CustomModal closeEvent={() => setShowModal(false)} title="Your form">
-        <div className="row">
-          <CodeBox string={stringCode} />
-          <ExampleBox form={form} />
-        </div>
-      </CustomModal>
+      {showCustomizeModal && itemForCustomize && (
+        <CustomModal closeEvent={hideCustomizeModal} title="Customize your field" size="small">
+          <CustomizeItem item={itemForCustomize} updateItem={setItemForCustomize} />
+
+          <div>
+            <button type="button" className="btn btn-primary" onClick={applyUpdate}>Save</button>
+          </div>
+        </CustomModal>
+      )}
+
+      {totalFormModal && (
+        <CustomModal closeEvent={() => setTotalFormModal(false)} title="Your Form">
+          <div className="row">
+            <CodeBox string={stringCode} />
+            <ExampleBox form={list.map((el) => el.formItem)} />
+          </div>
+        </CustomModal>
       )}
     </>
   );
 };
 
-export default () => (
-  <Constructor />
-);
+export default Constructor;

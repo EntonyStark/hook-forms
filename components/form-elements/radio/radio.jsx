@@ -1,9 +1,9 @@
 import { classNames } from '../../../utils/classNames';
 
 export default ({
-  error, touched, buttons = [], onChange, name, value,
+  error, touched, buttons = [], onChange, name, value, ...rest
 }) => (
-  <>
+  <div className="form-group">
     {buttons.map((el) => (
       <div className="form-check form-check-inline" key={el.value}>
         <input
@@ -17,10 +17,11 @@ export default ({
           value={el.value}
           checked={value === el.value}
           onChange={onChange}
+          {...rest}
         />
         <label className="form-check-label" htmlFor={el.value}>{el.title}</label>
       </div>
     ))}
     <div className="invalid-feedback" style={{ display: error && touched ? 'block' : 'none' }}>{error}</div>
-  </>
+  </div>
 );

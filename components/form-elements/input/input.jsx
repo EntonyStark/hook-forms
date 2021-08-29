@@ -1,21 +1,22 @@
 import { classNames } from '../../../utils/classNames';
 
 export default ({
-  label, placeholder, error, value, onChange, touched, name,
+  name, type = 'text', error, touched, placeholder, label, value, onChange, ...rest
 }) => (
   <div className="form-group">
     {label && <label htmlFor={name}>{label}</label>}
-    <textarea
-      name={name}
+    <input
       id={name}
-      onChange={onChange}
+      name={name}
+      type={type}
       value={value}
-      rows="3"
+      onChange={onChange}
+      placeholder={placeholder}
       className={classNames({
         'form-control': true,
         'is-invalid': !!(error && touched),
       })}
-      placeholder={placeholder}
+      {...rest}
     />
     <div className="invalid-feedback">{error}</div>
   </div>

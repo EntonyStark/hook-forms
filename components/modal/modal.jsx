@@ -6,22 +6,28 @@ import { useWidth } from '../hooks/useWidth';
 import { classNames } from '../../utils/classNames';
 import styles from './modal.module.scss';
 
-const MAX_WIDTH = 1200;
+export const modalSize = {
+  small: 400,
+  medium: 800,
+  large: 1200,
+};
 
 export const CustomModal = ({
   children,
   className,
   closeEvent,
   title = 'Custom title',
+  size = modalSize.large,
 }) => {
   const windowWidth = useWidth();
   const modal = useRef(null);
 
   const width = useMemo(() => {
-    if (windowWidth >= MAX_WIDTH) return MAX_WIDTH;
+    const maxWidth = modalSize[size];
+    if (windowWidth >= maxWidth) return maxWidth;
 
-    return windowWidth - (20 * 2);
-  }, [windowWidth]);
+    return windowWidth - 20 * 2;
+  }, [windowWidth, size]);
 
   const handleClickOutside = (event) => {
     if (modal.current) {

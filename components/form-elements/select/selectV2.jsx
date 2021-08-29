@@ -9,6 +9,7 @@ export default ({
   name,
   value,
   placeholder,
+  ...rest
 }) => (
   <div className="form-group">
     {label && <label htmlFor={name}>{label}</label>}
@@ -21,6 +22,7 @@ export default ({
       name={name}
       value={value}
       onChange={onChange}
+      {...rest}
     >
       {!options || options.length === 0 ? (
         <option>{placeholder}&nbsp;</option>

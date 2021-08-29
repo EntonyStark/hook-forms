@@ -16,7 +16,7 @@ export const FormFactoryV2 = ({
   valuesBlock = false,
 }) => {
   const {
-    formArray, updateEvent, submitEvent, resetEvent, updateFormArray,
+    formArray, updateEvent, submitEvent, resetEvent, updateFormArray, runValidate,
   } = easyHook({ initialForm: form });
 
   useEffect(() => {
@@ -38,6 +38,7 @@ export const FormFactoryV2 = ({
                 name={item.name}
                 value={item.value}
                 onChange={updateEvent}
+                onBlur={() => !item.onChangeValidate && runValidate(item.name)}
                 error={item.error}
                 touched={item.touched}
               />
@@ -51,6 +52,7 @@ export const FormFactoryV2 = ({
                 name={item.name}
                 value={item.value}
                 onChange={updateEvent}
+                onBlur={() => !item.onChangeValidate && runValidate(item.name)}
                 error={item.error}
                 touched={item.touched}
               />
@@ -63,6 +65,7 @@ export const FormFactoryV2 = ({
                 label={item.options.label}
                 name={item.name}
                 onChange={updateEvent}
+                onBlur={() => !item.onChangeValidate && runValidate(item.name)}
                 options={item.options.options}
                 error={item.error}
                 touched={item.touched}
@@ -77,7 +80,8 @@ export const FormFactoryV2 = ({
                 name={item.name}
                 value={item.value}
                 onChange={updateEvent}
-                buttons={item.options.buttons}
+                onBlur={() => !item.onChangeValidate && runValidate(item.name)}
+                buttons={item.options.buttons || item.options.options}
                 error={item.error}
                 touched={item.touched}
               />
@@ -91,6 +95,7 @@ export const FormFactoryV2 = ({
               label={item.options.label}
               value={item.value}
               onChange={updateEvent}
+              onBlur={() => !item.onChangeValidate && runValidate(item.name)}
               error={item.error}
               touched={item.touched}
             />

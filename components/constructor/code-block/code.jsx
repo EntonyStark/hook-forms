@@ -1,4 +1,4 @@
-import { OverflowBox } from '../overflow-box';
+import { CodeBlockV2 } from '../../code/codeV2';
 
 export const CodeBox = ({ string }) => (
   <div className="col-md-6">
@@ -10,11 +10,7 @@ export const CodeBox = ({ string }) => (
           <p className="mb-0">3. Copy code of new form to your project</p>
         </blockquote>
       </div>
-      <OverflowBox className="card bg-light">
-        <div className="card-body">
-          <pre>{string}</pre>
-        </div>
-      </OverflowBox>
+      <CodeBlockV2 codeString={string} className="bg-light" />
     </div>
   </div>
 );
