@@ -24,7 +24,7 @@ const navItems = [
     ],
   },
   {
-    id: 'constructor', title: 'Form constructor', type: LINK_TYPE, url: URLS.constructor,
+    id: 'constructor', title: 'Form constructor (beta)', type: LINK_TYPE, url: URLS.constructor,
   },
 ];
 

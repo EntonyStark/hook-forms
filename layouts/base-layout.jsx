@@ -11,6 +11,7 @@ export const BaseLayout = ({ children }) => {
   useEffect(() => {
     if (Object.keys(repoInfo).length === 0) getRepoInfo().then((res) => setRepoInfo(res)).catch((err) => console.warn(err));
   }, []);
+
   return (
     <>
       <Header repoInfo={repoInfo} />
