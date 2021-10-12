@@ -42,8 +42,8 @@ const genOptions = (o) => {
 const getValidate = (o) => {
   let string = '';
   if (o.maxLength) {
-    string = string.length === 0 ? `maxLength: (v) => (v.trim().length > ${o.maxLength} ? 'Invalid' : ''),` : `${string}
-      maxLength: (v) => (v.trim().length > ${o.maxLength} ? 'Invalid' : ''),`;
+    string = string.length === 0 ? `maxLength: (v) => (v.trim().length < ${o.maxLength} ? 'Invalid' : ''),` : `${string}
+      maxLength: (v) => (v.trim().length < ${o.maxLength} ? 'Invalid' : ''),`;
   }
   if (o.pattern) {
     string = string.length === 0 ? `pattern: (v) => (${new RegExp(o.pattern)}.test(v) ? '' : 'Invalid'),` : `${string}

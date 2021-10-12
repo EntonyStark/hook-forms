@@ -333,12 +333,40 @@ const validate = () => runValidate('firstName')
     type: 'Boolean',
     link: {
       ref: 'api',
-      nested: false,
-      last: true,
+      nested: true,
+      last: false,
       text: 'disabled',
       anchor: 'disabled',
     },
     desc: 'Calculated from required properties, in all form items.',
     code: null,
+  },
+  {
+    id: '23',
+    title: 'getProps',
+    type: 'Function',
+    link: {
+      ref: 'api',
+      nested: false,
+      last: true,
+      text: 'getProps',
+      anchor: 'getProps',
+    },
+    desc: 'Event for returns object with future props for element',
+    code: `const props = getProps('email', { type: 'text' }, false);
+// -> { name: 'email', value: '',  type: 'text', touched: false, error: '' }
+
+or
+const props = getProps('email', { type: 'text' }, true);
+// if pass third parameter like "true", that meant's function will return only valid dom attributes
+// -> { name: 'email', value: '',  type: 'text' }
+
+or
+const props = getProps('email');
+// -> { name: 'email', value: '', touched: false, error: '' }
+
+
+<input {...props} />
+    `,
   },
 ];

@@ -9,11 +9,13 @@ import {
   CHECKBOX, SELECT, RADIO, TEXTAREA,
 } from '../../../constants';
 
+import { Tabs } from '../../code/tabs';
 import { Values } from '../../values/values';
 
 export const FormFactoryV2 = ({
   form,
   valuesBlock = false,
+  tabs = true,
 }) => {
   const {
     formArray, updateEvent, submitEvent, resetEvent, updateFormArray, runValidate,
@@ -110,6 +112,7 @@ export const FormFactoryV2 = ({
           </div>
         </div>
       </form>
+      {tabs && <Tabs />}
       {valuesBlock && (
         <div className="mt-5">
           <h4>Values</h4>

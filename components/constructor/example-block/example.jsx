@@ -14,7 +14,7 @@ export const ExampleBox = ({ form }) => (
       <OverflowBox className="card bg-light">
         {form.length !== 0 && (
           <div className="card-body">
-            <FormFactoryV2 form={form} />
+            <FormFactoryV2 form={form} tabs={false} />
           </div>
         )}
       </OverflowBox>
