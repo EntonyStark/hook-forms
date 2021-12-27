@@ -26,6 +26,7 @@ export const FormFactoryV2 = ({
   }, [form]);
 
   const submit = (v) => {
+    // eslint-disable-next-line no-alert
     alert(JSON.stringify(v, null, 2));
   };
   return (
@@ -41,8 +42,8 @@ export const FormFactoryV2 = ({
                 value={item.value}
                 onChange={updateEvent}
                 onBlur={() => !item.onChangeValidate && runValidate(item.name)}
-                error={item.error}
-                touched={item.touched}
+                // error={item.error}
+                // touched={item.touched}
               />
             );
           }

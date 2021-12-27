@@ -354,16 +354,16 @@ const validate = () => runValidate('firstName')
     },
     desc: 'Event for returns object with future props for element',
     code: `const props = getProps('email', { type: 'text' }, false);
-// -> { name: 'email', value: '',  type: 'text', touched: false, error: '' }
+// -> { name: 'email', value: '',  type: 'text', touched: false, error: '', onChange: updateEvent }
 
 or
 const props = getProps('email', { type: 'text' }, true);
 // if pass third parameter like "true", that meant's function will return only valid dom attributes
-// -> { name: 'email', value: '',  type: 'text' }
+// -> { name: 'email', value: '',  type: 'text', onChange: updateEvent }
 
 or
 const props = getProps('email');
-// -> { name: 'email', value: '', touched: false, error: '' }
+// -> { name: 'email', value: '', touched: false, error: '', onChange: updateEvent }
 
 
 <input {...props} />
